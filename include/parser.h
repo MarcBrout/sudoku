@@ -4,7 +4,7 @@
 ** Made by benjamin duhieu
 ** Login   <duhieu_b@epitech.net>
 **
-** Started on  Sat Feb 27 11:52:38 2016 benjamin duhieu
+** Last update Sat Feb 27 22:47:04 2016 marc brout
 ** Last update Sat Feb 27 12:00:46 2016 benjamin duhieu
 */
 
@@ -58,7 +58,8 @@ t_sudoku *parse_input();
 ** free : free.c
 */
 
-void	free_sudoku(t_sudoku *sudo);
+void	freestr(char *str);
 void	free_tab(char **tab);
+void	free_sudoku(t_sudoku *sudo);
 
 #endif /* !PARSER_H_ */

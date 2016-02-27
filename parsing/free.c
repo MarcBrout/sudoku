@@ -5,12 +5,18 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 01:15:39 2016 marc brout
-** Last update Sat Feb 27 12:01:11 2016 benjamin duhieu
+** Last update Sat Feb 27 22:45:53 2016 marc brout
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "sudoki.h"
+
+void		freestr(char *str)
+{
+  if (str)
+    free(str);
+}
 
 void		free_tab(char **tab)
 {

@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Feb 26 21:10:58 2016 marc brout
-** Last update Sat Feb 27 20:15:41 2016 benjamin duhieu
+** Last update Sat Feb 27 22:45:36 2016 marc brout
 */
 
 #include <string.h>
@@ -37,7 +37,7 @@ int		parse_tab(t_sudoku *sudo)
       fill_line(sudo->tab[y], str);
       if (check_str(sudo->tab[y]))
 	return (1);
-      free(str);
+      freestr(str);
     }
   return (0);
 }
@@ -71,14 +71,29 @@ t_sudoku	*parse_input()
     {
       if (!(tmp = parse_one_input()))
 	return (NULL);
-      free(str);
+      freestr(str);
       is_it_valid(tmp);
       check_integrity(tmp);
       add_to_end_list(sudo, tmp);
       if (!(str = get_next_line(0)) || strlen(str) < 20)
 	return (NULL);
-      free(str);
+      freestr(str);
     }
-  free(str);
+  freestr(str);
   return (sudo);
 }
+<<<<<<< HEAD
+
+int		main()
+{
+  t_sudoku	*tmp;
+
+  tmp = NULL;
+  if (!(tmp = parse_input()))
+    return (1);
+  print_sudoki_list(tmp);
+  free_sudoku(tmp);
+  return (0);
+}
+=======
+>>>>>>> 417913a5c2b1d51d87835da31afd345b3a64c012
