@@ -5,11 +5,11 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 00:58:19 2016 marc brout
-** Last update Sat Feb 27 00:59:47 2016 marc brout
+** Last update Sat Feb 27 11:22:55 2016 benjamin duhieu
 */
 
 #include <stdlib.h>
-#include "parser.h"
+#include "sudoki.h"
 
 void		add_to_end_list(t_sudoku *first, t_sudoku *last)
 {

@@ -5,12 +5,12 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 01:15:39 2016 marc brout
-** Last update Sat Feb 27 22:31:48 2016 marc brout
+** Last update Sat Feb 27 22:45:53 2016 marc brout
 */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "parser.h"
+#include "sudoki.h"
 
 void		freestr(char *str)
 {

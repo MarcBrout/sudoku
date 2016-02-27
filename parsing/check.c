@@ -5,10 +5,10 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 00:49:25 2016 marc brout
-** Last update Sat Feb 27 01:35:54 2016 marc brout
+** Last update Sat Feb 27 11:24:13 2016 benjamin duhieu
 */
 
-#include "parser.h"
+#include "sudoki.h"
 
 void		is_it_valid(t_sudoku *sudos)
 {
