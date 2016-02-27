@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 22:16:06 2016 benjamin duhieu
-** Last update Sat Feb 27 22:32:17 2016 benjamin duhieu
+** Last update Sat Feb 27 23:08:48 2016 benjamin duhieu
 */
 
 #include <stdio.h>
@@ -72,9 +72,9 @@ void		road_to_list(t_sudoku *sudo)
   while (elem != NULL)
     {
       if (res(elem->tab))
-	elem->block = 1;
+	elem->valid = 1;
       else
-	elem->block = 0;
+	elem->valid = 0;
       elem = elem->next;
     }
 }
