@@ -5,15 +5,18 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sat Feb 27 11:00:52 2016 benjamin duhieu
-** Last update Sat Feb 27 22:37:01 2016 benjamin duhieu
+** Last update Sat Feb 27 23:24:38 2016 benjamin duhieu
 */
 
 #include "sudoki.h"
 
-int		main()
+int		main(int argc, char **argv)
 {
   t_sudoku	*tmp;
 
+  if (argc > 1 || !argv)
+    return (my_puterror
+	    ("Usage : ./sudoki-bi use a valid map on the standard input (0).\n"));
   tmp = NULL;
   if (!(tmp = parse_input()))
     return (1);
