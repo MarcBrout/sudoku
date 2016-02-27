@@ -1,11 +1,11 @@
 /*
-** parser.h for sudoki-bi in /home/duhieu_b/Prog_elem/sudoki-bi/include
+** parser.h for sudoki in /home/brout_m/RENDU/CPE/sudoki-bi/include
 **
-** Made by benjamin duhieu
-** Login   <duhieu_b@epitech.net>
+** Made by marc brout
+** Login   <brout_m@epitech.net>
 **
-** Last update Sat Feb 27 22:47:04 2016 marc brout
-** Last update Sat Feb 27 12:00:46 2016 benjamin duhieu
+** Started on  Sat Feb 27 23:08:11 2016 marc brout
+** Last update Sat Feb 27 23:08:13 2016 marc brout
 */
 
 #ifndef PARSER_H_
@@ -14,7 +14,6 @@
 typedef struct		s_sudoku
 {
   int			valid;
-  int			block;
   char			**tab;
   struct s_sudoku	*next;
 }			t_sudoku;

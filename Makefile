@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Feb 25 16:34:58 2016 marc brout
-## Last update Sat Feb 27 22:42:17 2016 benjamin duhieu
+## Last update Sat Feb 27 23:06:15 2016 marc brout
 ##
 
 SRCR		=	res/
@@ -13,6 +13,8 @@ SRCR		=	res/
 SRCP		=	parsing/
 
 SRCM		=	main/
+
+SRCG		=	generate/
 
 SRC     	=	$(SRCM)main.c \
 			$(SRCP)parsing.c \
@@ -29,9 +31,19 @@ SRC     	=	$(SRCM)main.c \
 			$(SRCR)fill_tab.c \
 			$(SRCR)check.c
 
+SRCGEN		=	$(SRCG)generate.c \
+			$(SRCG)list.c \
+			$(SRCG)free.c \
+			$(SRCG)check.c \
+			$(SRCG)array.c \
+
 OBJS    	=	$(SRC:.c=.o)
 
-NAME    	=	sudoki-bi
+OBJSGEN		=	$(SRCGEN:.c=.o)
+
+NAME    	=	bin/sudoki-bi
+
+GENERATOR	=	bin/generator-sudoki-bi
 
 CC      	=	gcc -g
 
@@ -51,12 +63,17 @@ RM      	=	rm -f
 $(NAME):		$(OBJS)
 			$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)
 
+bonus:			$(OBJSGEN)
+			$(CC) -o $(GENERATOR) $(OBJSGEN) $(LDFLAGS)
+
 all:			$(NAME)
 
 clean:
 			$(RM) $(OBJS)
+			$(RM) $(OBJSGEN)
 
 fclean:			clean
 			$(RM) $(NAME)
+			$(RM) $(GENERATOR)
 
 re:			fclean all
