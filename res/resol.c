@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sat Feb 27 11:04:33 2016 benjamin duhieu
-** Last update Sat Feb 27 23:07:34 2016 benjamin duhieu
+** Last update Sat Feb 27 23:11:51 2016 benjamin duhieu
 */
 
 #include <stdio.h>
@@ -78,6 +78,7 @@ int		put_in_tab(t_case *root, t_case *posit, char **grille)
   int		i;
 
   i = 0;
+  nbr = 0;
   while (root && posit != root && ++i)
     {
       if (i > 5000)
