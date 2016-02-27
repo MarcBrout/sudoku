@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 22:16:06 2016 benjamin duhieu
-** Last update Sat Feb 27 23:08:48 2016 benjamin duhieu
+** Last update Sat Feb 27 23:44:40 2016 benjamin duhieu
 */
 
 #include <stdio.h>
@@ -28,7 +28,7 @@ int	nb_possib(char **grille)
   int	*tab;
 
   if ((tab = malloc(sizeof(int) * 10)) == NULL)
-    return (1);
+    return (my_puterror(MALLOC_ERROR));
   tab[9] = -1;
   i = -1;
   while (++i < 9)
@@ -49,7 +49,7 @@ int		res(char **grille)
   t_case	*root;
 
   if ((root = malloc(sizeof(t_case))) == NULL)
-    return (my_puterror("Error: Malloc failed\n"));
+    return (my_puterror(MALLOC_ERROR));
   root->next = root;
   root->prev = root;
   if (nb_possib(grille))
@@ -72,9 +72,9 @@ void		road_to_list(t_sudoku *sudo)
   while (elem != NULL)
     {
       if (res(elem->tab))
-	elem->valid = 1;
-      else
 	elem->valid = 0;
+      else
+	elem->valid = 1;
       elem = elem->next;
     }
 }
