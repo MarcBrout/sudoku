@@ -5,11 +5,18 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 00:54:57 2016 marc brout
-** Last update Sat Feb 27 22:45:15 2016 marc brout
+** Last update Sat Feb 27 23:19:00 2016 marc brout
 */
 
+#include <string.h>
 #include <stdio.h>
 #include "sudoki.h"
+
+void		*my_puterrornull(const char *str)
+{
+  write(2, str, strlen(str));
+  return (NULL);
+}
 
 void		show_valid_sudo(t_sudoku *sudos)
 {

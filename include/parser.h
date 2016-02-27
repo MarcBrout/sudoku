@@ -5,11 +5,14 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 23:08:11 2016 marc brout
-** Last update Sat Feb 27 23:10:33 2016 marc brout
+** Last update Sat Feb 27 23:29:48 2016 marc brout
 */
 
 #ifndef PARSER_H_
 # define PARSER_H_
+
+# define MAP_ERROR "MAP ERROR\n"
+# define MALLOC_ERROR "Memory allocation error, program exited.\n"
 
 typedef struct		s_sudoku
 {
@@ -32,6 +35,7 @@ int	check_cube(t_sudoku *sudo, int x, int y, int k);
 ** show tabs : show.c
 */
 
+void	*my_puterrornull(const char *str);
 void	show_valid_sudo(t_sudoku *sudos);
 void	show_not_valid_sudo(t_sudoku *sudos);
 void	print_sudoki_list(t_sudoku *sudos);

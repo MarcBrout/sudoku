@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Feb 26 21:10:58 2016 marc brout
-** Last update Sat Feb 27 23:10:13 2016 marc brout
+** Last update Sat Feb 27 23:32:54 2016 marc brout
 */
 
 #include <string.h>
@@ -32,11 +32,13 @@ int		parse_tab(t_sudoku *sudo)
   y = -1;
   while (++y < 9)
     {
-      if (!(str = get_next_line(0)) || strlen(str) != 20)
-	return (1);
+      if (!(str = get_next_line(0)))
+	return (my_puterror(MALLOC_ERROR));
+      if (strlen(str) != 20)
+	return (my_puterror(MAP_ERROR));
       fill_line(sudo->tab[y], str);
       if (check_str(sudo->tab[y]))
-	return (1);
+	return (my_puterror(MAP_ERROR));
       freestr(str);
     }
   return (0);
@@ -47,7 +49,7 @@ t_sudoku	*parse_one_input()
   t_sudoku	*sudo;
 
   if (!(sudo = malloc(sizeof(t_sudoku))))
-    return (NULL);
+    return (my_puterrornull(MALLOC_ERROR));
   sudo->valid = 1;
   if (!(sudo->tab = set_tab()))
     return (NULL);
@@ -64,11 +66,13 @@ t_sudoku	*parse_input()
   t_sudoku	*tmp;
 
   if (!(sudo = malloc(sizeof(t_sudoku))))
-    return (NULL);
+    return (my_puterrornull(MAP_ERROR));
   sudo->valid = 2;
   sudo->next = NULL;
-  while ((str = get_next_line(0)) && strlen(str) == 20)
+  while ((str = get_next_line(0)))
     {
+      if (strlen(str) != 20)
+	return (my_puterrornull(MAP_ERROR));
       if (!(tmp = parse_one_input()))
 	return (NULL);
       freestr(str);
@@ -76,7 +80,7 @@ t_sudoku	*parse_input()
       check_integrity(tmp);
       add_to_end_list(sudo, tmp);
       if (!(str = get_next_line(0)) || strlen(str) != 20)
-	return (NULL);
+	return (my_puterrornull(MAP_ERROR));
       freestr(str);
     }
   freestr(str);
