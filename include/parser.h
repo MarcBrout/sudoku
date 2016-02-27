@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Feb 26 21:13:58 2016 marc brout
-** Last update Sat Feb 27 10:43:32 2016 benjamin duhieu
+** Last update Sat Feb 27 22:32:03 2016 marc brout
 */
 
 #ifndef PARSER_H_
@@ -49,6 +49,7 @@ char	**set_tab();
 ** free : free.c
 */
 
+void	freestr(char *str);
 void	free_tab(char **tab);
 void	free_sudoku(t_sudoku *sudo);
 
