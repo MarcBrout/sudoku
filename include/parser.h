@@ -4,7 +4,7 @@
 ** Made by benjamin duhieu
 ** Login   <duhieu_b@epitech.net>
 **
-** Last update Sat Feb 27 22:47:04 2016 marc brout
+** Last update Sat Feb 27 23:07:06 2016 benjamin duhieu
 ** Last update Sat Feb 27 12:00:46 2016 benjamin duhieu
 */
 
@@ -14,7 +14,6 @@
 typedef struct		s_sudoku
 {
   int			valid;
-  int			block;
   char			**tab;
   struct s_sudoku	*next;
 }			t_sudoku;

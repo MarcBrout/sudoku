@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sat Feb 27 11:04:33 2016 benjamin duhieu
-** Last update Sat Feb 27 22:43:22 2016 benjamin duhieu
+** Last update Sat Feb 27 23:07:34 2016 benjamin duhieu
 */
 
 #include <stdio.h>
@@ -57,29 +57,42 @@ int	chk_box(char **grille, t_case *posit, int nbr)
   return (1);
 }
 
+int		fill_the_tab(t_case *root, t_case *posit, char ** grille, int nbr)
+{
+  nbr = choose_nbr(posit);
+  if (chk_line(grille, posit, nbr) == 1 &&
+	      chk_column(grille, posit, nbr) == 1 &&
+      chk_box(grille, posit, nbr) == 1)
+    {
+      grille[posit->pos.x][posit->pos.y] = nbr + 48;
+      posit = posit->next;
+      if (posit == root)
+	return (0);
+    }
+  return (1);
+}
+
 int		put_in_tab(t_case *root, t_case *posit, char **grille)
 {
   int		nbr;
+  int		i;
 
-  while (root && posit != root)
-    if (!check_tab(posit->tab))
-      {
-	nbr = choose_nbr(posit);
-	if (chk_line(grille, posit, nbr) == 1 &&
-	    chk_column(grille, posit, nbr) == 1 &&
-	    chk_box(grille, posit, nbr) == 1)
-	  {
-	    grille[posit->pos.x][posit->pos.y] = nbr + 48;
-	    posit = posit->next;
-	    if (posit == root)
-	      return (0);
-	  }
-      }
-    else
-      {
-	init_tab(posit->tab);
-	posit = posit->prev;
-	grille[posit->pos.x][posit->pos.y] = '0';
-      }
+  i = 0;
+  while (root && posit != root && ++i)
+    {
+      if (i > 5000)
+	return (1);
+      if (!check_tab(posit->tab))
+	{
+	  if (!fill_the_tab(root, posit, grille, nbr))
+	    return (0);
+	}
+      else
+	{
+	  init_tab(posit->tab);
+	  posit = posit->prev;
+	  grille[posit->pos.x][posit->pos.y] = '0';
+	}
+    }
   return (1);
 }

@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Feb 26 21:10:58 2016 marc brout
-** Last update Sat Feb 27 22:45:36 2016 marc brout
+** Last update Sat Feb 27 22:49:15 2016 benjamin duhieu
 */
 
 #include <string.h>
@@ -82,18 +82,3 @@ t_sudoku	*parse_input()
   freestr(str);
   return (sudo);
 }
-<<<<<<< HEAD
-
-int		main()
-{
-  t_sudoku	*tmp;
-
-  tmp = NULL;
-  if (!(tmp = parse_input()))
-    return (1);
-  print_sudoki_list(tmp);
-  free_sudoku(tmp);
-  return (0);
-}
-=======
->>>>>>> 417913a5c2b1d51d87835da31afd345b3a64c012
