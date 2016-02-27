@@ -5,51 +5,39 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sat Feb 27 11:04:33 2016 benjamin duhieu
-** Last update Sat Feb 27 20:09:26 2016 benjamin duhieu
+** Last update Sat Feb 27 21:17:51 2016 benjamin duhieu
 */
 
 #include <stdio.h>
 #include "sudoki.h"
 
-int	chk_line(char **grille, t_case *posit)
+int	chk_line(char **grille, t_case *posit, int nbr)
 {
   int	k;
 
   k = -1;
   while (++k < 9)
     {
-      if (k != posit->pos.y && grille[posit->pos.x][k] == posit->count + 48)
-	{
-	  printf("chk_line :grille[%d][%d] = %d--------- && posx = %d && posx = %d\n",
-		 posit->pos.x, k,
-		 grille[posit->pos.x][k], posit->pos.x, posit->pos.y);
-	  return (0);
-	}
+      if (k != posit->pos.y && grille[posit->pos.x][k] == nbr + 48)
+	return (0);
     }
-  /* printf("c\n"); */
   return (1);
 }
 
-int	chk_column(char **grille, t_case *posit)
+int	chk_column(char **grille, t_case *posit, int nbr)
 {
   int	k;
 
   k = -1;
   while (++k < 9)
     {
-      if (k != posit->pos.x && grille[k][posit->pos.y] == posit->count + 48)
-	{
-	  printf("chk_col : grille[%d][%d] = %d--------- && posx = %d && posx = %d\n",
-		 k, posit->pos.y,
-		 grille[k][posit->pos.y], posit->pos.x, posit->pos.y);
-	  return (0);
-	}
+      if (k != posit->pos.x && grille[k][posit->pos.y] == nbr + 48)
+	return (0);
     }
-  /* printf("b\n"); */
   return (1);
 }
 
-int	chk_box(char **grille, t_case *posit)
+int	chk_box(char **grille, t_case *posit, int nbr)
 {
   int	k;
   int	a;
@@ -63,73 +51,62 @@ int	chk_box(char **grille, t_case *posit)
       if ((3 * (posit->pos.x / 3) + a) != posit->pos.x &&
 	  (3 * (posit->pos.y / 3) + k % 3) != posit->pos.y
 	  && grille[3 * (posit->pos.x / 3) + a ]
-	  [3 * (posit->pos.y / 3) + k % 3] == posit->count + 48)
-	{
-	  printf("chk_box :grille[%d][%d] = %d--------- && posx = %d && posx = %d\n",
-		 3 * (posit->pos.x / 3) + a, 3 * (posit->pos.y / 3) + k % 3,
-		 grille[3 * (posit->pos.x / 3) + a][3 * (posit->pos.y / 3) + k % 3], posit->pos.x, posit->pos.y);
-	  return (0);
-	}
+	  [3 * (posit->pos.y / 3) + k % 3] == nbr + 48)
+	return (0);
     }
-  /* printf("a\n"); */
   return (1);
 }
 
-void		show_tab(char **grille)
+int		check_tab(int *tab)
 {
-  int		y;
-  int		x;
+  int		i;
 
-  y = -1;
-  printf("|------------------|\n");
-  while (++y < 9)
-    {
-      x = -1;
-      printf("|");
-      while (++x < 9)
-	printf(" %c", grille[y][x]);
-      printf("|\n");
-    }
-  printf("|------------------|\n");
+  i = -1;
+  while (++i < 9)
+    if (tab[i] == 1)
+      return (0);
+  return (1);
+}
+
+int		choose_nbr(t_case *posit)
+{
+  int		nbr;
+
+  nbr = rand() % 9;
+  while (!posit->tab[nbr])
+    nbr = rand() % 9;
+  posit->tab[nbr] = 0;
+  return (nbr + 1);
 }
 
 int		put_in_tab(t_case *root, t_case *posit, char **grille)
 {
   int		i;
+  int		nbr;
 
   i = 0;
   while (root && posit != root)
     {
-      printf("i = %d\n", i);
-      show_tab(grille);
-      if (posit->count <= 9)
+      if (!check_tab(posit->tab))
 	{
-	  if (chk_line(grille, posit) == 1 && chk_column(grille, posit) == 1 &&
-	      chk_box(grille, posit) == 1)
+	  nbr = choose_nbr(posit);
+	  if (chk_line(grille, posit, nbr) == 1 &&
+	      chk_column(grille, posit, nbr) == 1 &&
+	      chk_box(grille, posit, nbr) == 1)
 	    {
-	      /* if (posit->count > 9) */
-	      /*   posit->count -= 10; */
-	      grille[posit->pos.x][posit->pos.y] = posit->count + 48;
-	      printf("go forward = %d, grille[%d][%d] = %d\n", posit->count, posit->pos.x, posit->pos.y, grille[posit->pos.x][posit->pos.y]);
-	      posit->count++;
+	      grille[posit->pos.x][posit->pos.y] = nbr + 48;
 	      posit = posit->next;
 	      i++;
 	      if (posit == root)
 		return (0);
-	      printf("next = %d\n", posit->count);
 	    }
-	  else
-	    posit->count++;
 	}
       else
 	{
 	  i--;
-	  printf("go backward = %d\n", posit->count);
-	  posit->count = 1;
-	  grille[posit->pos.x][posit->pos.y] = ' ';
+	  init_tab(posit->tab);
 	  posit = posit->prev;
-	  printf("prev_count = %d\n", posit->count);
-	  grille[posit->pos.x][posit->pos.y] = ' ';
+	  grille[posit->pos.x][posit->pos.y] = '0';
 	}
      }
   return (1);

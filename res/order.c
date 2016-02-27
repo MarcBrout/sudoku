@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 22:16:06 2016 benjamin duhieu
-** Last update Sat Feb 27 20:01:49 2016 benjamin duhieu
+** Last update Sat Feb 27 20:51:41 2016 benjamin duhieu
 */
 
 #include <stdio.h>
@@ -19,10 +19,7 @@ int	*line(char **grille, int i, int *tab)
   k = -1;
   while (++k < 9)
     if (grille[i][k] >= '1' && grille[i][k] <= '9')
-      {
-	/* printf("(i, k)grille[%d][%d] = %d\n", i, k, grille[i][k] - 48); */
-	tab[grille[i][k] - 49] = 0;
-      }
+      tab[grille[i][k] - 49] = 0;
   return (tab);
 }
 
@@ -33,10 +30,7 @@ int	*column(char **grille, int j, int *tab)
   k = -1;
   while (++k < 9)
     if (grille[k][j] >= '1' && grille[k][j] <= '9')
-      {
-	/* printf("(k, i)grille[%d][%d] = %d\n", k, j, grille[k][j] - 48); */
-	tab[grille[k][j] - 49] = 0;
-      }
+      tab[grille[k][j] - 49] = 0;
   return (tab);
 }
 
@@ -53,11 +47,7 @@ int	*box(char **grille, int i, int j, int *tab)
 	a++;
       if (grille[3 * (i / 3) + a][3 * (j / 3) + k % 3] >= '1' &&
 	  grille[3 * (i / 3) + a][3 * (j / 3) + k % 3] <= '9')
-	{
-	  /* printf("(i, jk)grille[%d][%d] = %d\n", 3 * (i / 3) + a, 3 * (j / 3) + k % 3, */
-	  /* 	 grille[3 * (i / 3) + a][3 * (j / 3) + k % 3] - 48); */
-	  tab[grille[3 * (i / 3) + a][3 * (j / 3) + k % 3] - 49] = 0;
-	}
+	tab[grille[3 * (i / 3) + a][3 * (j / 3) + k % 3] - 49] = 0;
     }
   return (tab);
 }
@@ -69,7 +59,6 @@ int	count_possib(int *tab)
 
   i = -1;
   res = 0;
-  /* printf("||||||||TAB[0] = %d - TAB[1] = %d - TAB[2] = %d||||||||\n||||||||TAB[3] = %d - TAB[4] = %d - TAB[5] = %d||||||||\n||||||||TAB[6] = %d - TAB[7] = %d - TAB[8] = %d||||||||\n", tab[0], tab[1], tab[2], tab[3], tab[4], tab[5], tab[6], tab[7], tab[8]); */
   while (++i < 9)
     if (tab[i] == 1)
       res++;
@@ -84,7 +73,6 @@ int	check(char **grille, int i, int j, int *tab)
   column(grille, j, tab);
   box(grille, i, j, tab);
   res = count_possib(tab);
-  /* printf("grille[%d][%d] = res (%d)\n", i, j, res); */
   return (res);
 }
 

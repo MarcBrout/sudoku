@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sat Feb 27 11:03:16 2016 benjamin duhieu
-** Last update Sat Feb 27 12:16:39 2016 benjamin duhieu
+** Last update Sat Feb 27 21:14:03 2016 benjamin duhieu
 */
 
 #include <stdlib.h>
@@ -18,9 +18,12 @@ int		add_in_list(int i, int j, t_case *root)
 
   if ((elem = malloc(sizeof(t_case))) == NULL)
     return (1);
+  if ((elem->tab = malloc(sizeof(int) * 10)) == NULL)
+    return (1);
+  elem->tab[9] = -1;
+  init_tab(elem->tab);
   elem->pos.x = i;
   elem->pos.y = j;
-  elem->count = 1;
   elem->next = root;
   elem->prev = root->prev;
   root->prev = elem;

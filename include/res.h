@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sat Feb 27 11:57:09 2016 benjamin duhieu
-** Last update Sat Feb 27 18:16:14 2016 benjamin duhieu
+** Last update Sat Feb 27 21:08:07 2016 benjamin duhieu
 */
 
 #ifndef RES_H_
@@ -20,7 +20,7 @@ typedef	struct	s_position
 typedef	struct	s_case
 {
   t_position	pos;
-  char		count;
+  int		*tab;
   struct s_case	*next;
   struct s_case	*prev;
 }		t_case;
@@ -29,9 +29,11 @@ typedef	struct	s_case
 ** check functions : resol.c
 */
 
-int	chk_box(char **, t_case *);
-int	chk_column(char **,t_case *);
-int	chk_line(char **, t_case *);
+int	check_tab(int *);
+int	chk_box(char **, t_case *, int);
+int	chk_column(char **,t_case *, int);
+int	chk_line(char **, t_case *, int);
+int	choose_nbr(t_case *);
 int	put_in_tab(t_case *, t_case *, char **);
 
 /*
