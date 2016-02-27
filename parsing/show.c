@@ -5,11 +5,11 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 00:54:57 2016 marc brout
-** Last update Sat Feb 27 00:55:34 2016 marc brout
+** Last update Sat Feb 27 20:12:02 2016 benjamin duhieu
 */
 
 #include <stdio.h>
-#include "parser.h"
+#include "sudoki.h"
 
 void		show_valid_sudo(t_sudoku *sudos)
 {

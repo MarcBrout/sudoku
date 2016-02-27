@@ -5,14 +5,13 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Feb 26 21:10:58 2016 marc brout
-** Last update Sat Feb 27 10:42:10 2016 benjamin duhieu
+** Last update Sat Feb 27 11:23:52 2016 benjamin duhieu
 */
 
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "parser.h"
-#include "get_next_line.h"
+#include "sudoki.h"
 
 int		check_str(const char *str)
 {
@@ -82,17 +81,4 @@ t_sudoku	*parse_input()
     }
   free(str);
   return (sudo);
-}
-
-int		main()
-{
-  t_sudoku	*tmp;
-
-  tmp = NULL;
-  if (!(tmp = parse_input()))
-    return (1);
-  print_sudoki_list(tmp);
-
-  free_sudoku(tmp);
-  return (0);
 }

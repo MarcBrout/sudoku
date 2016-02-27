@@ -1,14 +1,14 @@
 /*
 ** get_next_line.c for gnl
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Mon Jan  4 10:27:46 2016 marc brout
-** Last update Mon Feb 15 18:37:20 2016 marc brout
+** Last update Sat Feb 27 11:23:32 2016 benjamin duhieu
 */
 
-#include "get_next_line.h"
+#include "sudoki.h"
 
 char		*my_realloc(char *str, int size)
 {
