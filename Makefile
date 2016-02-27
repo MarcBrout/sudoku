@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Feb 25 16:34:58 2016 marc brout
-## Last update Sat Feb 27 12:05:12 2016 benjamin duhieu
+## Last update Sat Feb 27 22:42:17 2016 benjamin duhieu
 ##
 
 SRCR		=	res/
@@ -25,7 +25,9 @@ SRC     	=	$(SRCM)main.c \
 			$(SRCR)case_list.c \
 			$(SRCR)resol.c \
 			$(SRCR)free_back.c \
-			$(SRCR)error.c
+			$(SRCR)error.c \
+			$(SRCR)fill_tab.c \
+			$(SRCR)check.c
 
 OBJS    	=	$(SRC:.c=.o)
 
