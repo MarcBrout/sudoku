@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 13:23:20 2016 benjamin duhieu
-** Last update Sun Feb 28 19:35:12 2016 benjamin duhieu
+** Last update Sun Feb 28 19:38:07 2016 benjamin duhieu
 */
 
 #include <stdio.h>
@@ -67,12 +67,15 @@ void		position_square(t_list *square, t_bunny_pixelarray *grid)
 
   board = (unsigned *)grid->pixels;
   i = -1;
-  while (++i < 55)
+  while (++i < 52)
     {
       j = -1;
-      while (++j < 55)
-	board[((square->x * 55) + j) + ((square->y * 55) + i) *
-	      grid->clipable.clip_width] = GREY;
+	while (++j < 52)
+	  {
+	    pixel[(((WIDTH / 2) - 195) + sudo->x * 53 + j + 5) +
+		  (((HEIGHT / 2) - 195) + sudo->y * 53 + i + 5)
+		  * pix->clipable.clip_width] = GREY;
+	  }
     }
 }
 
