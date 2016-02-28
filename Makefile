@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Feb 25 16:34:58 2016 marc brout
-## Last update Sun Feb 28 13:38:51 2016 marc brout
+## Last update Sun Feb 28 14:30:28 2016 benjamin duhieu
 ##
 
 SRCR		=	res/
@@ -47,7 +47,9 @@ SRCINT		=	$(SRCI)main.c \
 			$(SRCI)get_next_line.c \
 			$(SRCI)list_game.c \
 			$(SRCI)error.c \
-			$(SRCI)show.c
+			$(SRCI)show.c \
+			$(SRCI)parse_game.c \
+			$(SRCI)disp_to_screen.c
 
 OBJS    	=	$(SRC:.c=.o)
 

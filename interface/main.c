@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:00:47 2016 benjamin duhieu
-** Last update Sun Feb 28 13:47:07 2016 benjamin duhieu
+** Last update Sun Feb 28 15:30:42 2016 benjamin duhieu
 */
 
 #include "sudoki.h"
@@ -37,9 +37,10 @@ t_bunny_response	main_loop(void	*data)
 
 int	init_main(t_main *sudoki)
 {
-  sudoki->pix = bunny_new_pixelarray(WIDTH, HEIGHT);
-  sudoki->win = bunny_start(WIDTH, HEIGHT, false, "sudoku");
-  if (!(sudoki->nbr.grid = bunny_load_pixelarray("jpg/grid.jpg")))
+  if (!(sudoki->pix = bunny_new_pixelarray(WIDTH, HEIGHT)) ||
+      !(sudoki->win = bunny_start(WIDTH, HEIGHT, false, "sudoku")))
+    return (1);
+  if ((sudoki->nbr.grid = bunny_load_pixelarray(GRID)) == NULL)
     return (1);
   if (!(sudoki->nbr.number[0] = bunny_load_pixelarray(NUM1)) ||
       !(sudoki->nbr.number[1] = bunny_load_pixelarray(NUM2)) ||
@@ -65,7 +66,8 @@ int		main(int argc, char **argv)
   tmp = NULL;
   if (!(tmp = parse_input()))
     return (1);
-  init_main(&sudoki);
+  if (init_main(&sudoki))
+    return (1);
   bunny_set_loop_main_function(main_loop);
   bunny_loop(sudoki.win, 60, &sudoki);
   bunny_delete_clipable(&(sudoki.pix->clipable));
