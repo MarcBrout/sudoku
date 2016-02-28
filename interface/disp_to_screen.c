@@ -5,11 +5,32 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 13:23:20 2016 benjamin duhieu
-** Last update Sun Feb 28 21:03:26 2016 benjamin duhieu
+** Last update Sun Feb 28 22:13:34 2016 benjamin duhieu
 */
 
 #include <stdio.h>
 #include "sudoki.h"
+
+void		disp_logo(t_bunny_pixelarray *img, t_bunny_pixelarray *pix,
+			  t_bunny_position *pos)
+{
+  t_color	*pixel;
+  t_color	*title;
+  int		i;
+  int		j;
+
+  pixel = (t_color *)pix->pixels;
+  title = (t_color *)img->pixels;
+  i = -1;
+  while (++i < img->clipable.clip_height)
+    {
+      j = -1;
+      while (++j < img->clipable.clip_width)
+	if (title[j + i * img->clipable.clip_width].argb[0] != 0)
+	  pixel[pos->x + j + (pos->y + i) * pix->clipable.clip_width] =
+	    title[j + i * img->clipable.clip_width];
+    }
+}
 
 void		position_square(t_list *square, t_bunny_pixelarray *pix)
 {

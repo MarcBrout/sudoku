@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:17:49 2016 benjamin duhieu
-** Last update Sun Feb 28 20:51:03 2016 benjamin duhieu
+** Last update Sun Feb 28 22:29:30 2016 benjamin duhieu
 */
 
 #include <stdlib.h>
@@ -51,6 +51,9 @@ void		delete_clip(t_main *sudoki)
   int		i;
 
   bunny_delete_clipable(&(sudoki->pix->clipable));
+  bunny_delete_clipable(&(sudoki->nbr.logo->clipable));
+  bunny_delete_clipable(&(sudoki->nbr.creator->clipable));
+  bunny_delete_clipable(&(sudoki->nbr.inst->clipable));
   i = -1;
   while (++i < 9)
     bunny_delete_clipable(&(sudoki->nbr.number[i]->clipable));
