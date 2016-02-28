@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Feb 25 16:34:58 2016 marc brout
-## Last update Sun Feb 28 21:45:54 2016 marc brout
+## Last update Sun Feb 28 22:43:56 2016 marc brout
 ##
 
 SRCR		=	res/
@@ -53,7 +53,8 @@ SRCINT		=	$(SRCI)main.c \
 			$(SRCI)disp_to_screen.c \
 			$(SRCI)keyboard.c \
 			$(SRCI)compare.c \
-			$(SRCI)victory.c
+			$(SRCI)victory.c \
+			$(SRCI)other_disp.c \
 
 OBJS    	=	$(SRC:.c=.o)
 
@@ -73,7 +74,7 @@ CFLAGS  	=	-W -Wall -Werror
 
 HDFLAGS 	=	-Iinclude/
 
-#HDFLAGS 	+=	-I/home/${USER}/.froot/include/lapin
+HDFLAGS 	+=	-I/home/${USER}/.froot/include/lapin
 
 LDFLAGS 	=
 

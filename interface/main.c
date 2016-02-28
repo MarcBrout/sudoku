@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:00:47 2016 benjamin duhieu
-** Last update Sun Feb 28 22:27:29 2016 marc brout
+** Last update Sun Feb 28 22:41:47 2016 marc brout
 */
 
 #include <unistd.h>
@@ -27,11 +27,21 @@ void		fill_screen(t_bunny_pixelarray *pix)
 t_bunny_response	main_loop(void	*data)
 {
   t_main		*sudoki;
+  t_bunny_position	pos;
 
   sudoki = data;
   if ((sudoki->vic || sudoki->lose) && sudoki->nbr.x > 820)
     sudoki->nbr.x--;
   fill_screen(sudoki->pix);
+  pos.x = 5;
+  pos.y = 5;
+  disp_logo(sudoki->nbr.logo, sudoki->pix, &pos);
+  pos.x = 650;
+  pos.y = 35;
+  disp_logo(sudoki->nbr.creator, sudoki->pix, &pos);
+  pos.x = 10;
+  pos.y = 300;
+  disp_logo(sudoki->nbr.inst, sudoki->pix, &pos);
   disp_grid_black(sudoki->pix);
   disp_blank(sudoki->pix);
   put_nbr(&sudoki->nbr, sudoki->cursudo->squares, sudoki->pix);
@@ -40,6 +50,7 @@ t_bunny_response	main_loop(void	*data)
     print_victory(sudoki->pix, sudoki->nbr.victory, sudoki->nbr.x);
   if (sudoki->lose)
     print_victory(sudoki->pix, sudoki->nbr.defeat, sudoki->nbr.x);
+  block_case(sudoki->cursudo->squares, sudoki->pix);
   bunny_blit(&(sudoki->win->buffer), &(sudoki->pix->clipable), NULL);
   bunny_display(sudoki->win);
   return (GO_ON);
@@ -50,7 +61,10 @@ int	init_main(t_main *sudoki)
   if (!(sudoki->pix = bunny_new_pixelarray(WIDTH, HEIGHT)) ||
       !(sudoki->win = bunny_start(WIDTH, HEIGHT, false, "sudoku")))
     return (1);
-  if (!(sudoki->nbr.number[0] = bunny_load_pixelarray(NUM1)) ||
+  if (!(sudoki->nbr.logo = bunny_load_pixelarray(LOGO)) ||
+      !(sudoki->nbr.creator = bunny_load_pixelarray(NAME)) ||
+      !(sudoki->nbr.inst = bunny_load_pixelarray(INS)) ||
+      !(sudoki->nbr.number[0] = bunny_load_pixelarray(NUM1)) ||
       !(sudoki->nbr.number[1] = bunny_load_pixelarray(NUM2)) ||
       !(sudoki->nbr.number[2] = bunny_load_pixelarray(NUM3)) ||
       !(sudoki->nbr.number[3] = bunny_load_pixelarray(NUM4)) ||

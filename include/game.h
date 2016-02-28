@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:01:44 2016 benjamin duhieu
-** Last update Sun Feb 28 22:18:46 2016 marc brout
+** Last update Sun Feb 28 22:42:33 2016 marc brout
 */
 
 #ifndef GAME_H_
@@ -15,6 +15,8 @@
 # define GREY 0xFFBDBDBD
 # define MOVE "./interface/sound/menu_select.ogg"
 # define LOGO "./interface/bmp/sudoku-logo.png"
+# define NAME "./interface/bmp/creator.png"
+# define INS  "./interface/bmp/instruction.png"
 # define GRID "./interface/bmp/grid.bmp"
 # define NUM1 "./interface/bmp/gold1.bmp"
 # define NUM2 "./interface/bmp/gold2.bmp"
@@ -33,6 +35,9 @@
 
 typedef	struct		s_image
 {
+  t_bunny_pixelarray	*logo;
+  t_bunny_pixelarray	*inst;
+  t_bunny_pixelarray	*creator;
   t_bunny_pixelarray	*number[9];
   t_bunny_pixelarray	*victory;
   t_bunny_pixelarray	*defeat;
@@ -59,6 +64,8 @@ int	init_main(t_main *);
 t_bunny_response	main_loop(void *);
 void	fill_screen(t_bunny_pixelarray *);
 
+void	block_case(t_list *, t_bunny_pixelarray *);
+void	disp_logo(t_bunny_pixelarray *, t_bunny_pixelarray *, t_bunny_position *);
 void	disp_blank(t_bunny_pixelarray *);
 void	disp_grid_black(t_bunny_pixelarray *);
 void	put_nbr(t_image *, t_list *, t_bunny_pixelarray *);
