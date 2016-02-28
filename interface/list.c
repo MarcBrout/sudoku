@@ -5,15 +5,20 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 20:41:09 2016 marc brout
-** Last update Sun Feb 28 15:33:03 2016 marc brout
+** Last update Sun Feb 28 15:44:33 2016 marc brout
 */
 
 #include <stdlib.h>
 #include "game.h"
 
-t_list		*new_sudoku(t_square *sudoku, int game)
+t_list		*new_sudoku(t_square *sudoku, int size)
 {
-  if (game > 1)
+  t_list	*list;
+
+  if (!(list = create_list_list(size)))
+    return (NULL);
+  initialize_list(sudoku->tab, list, size);
+  return (list);
 }
 
 void		initialize_list(char **tab, t_list *root, int size)
@@ -55,8 +60,7 @@ int		add_one_list_to_root(t_list *root, int position)
 {
   t_list	*elem;
 
-  if (!(elem = malloc(sizeof(t_list))) ||
-      init_tab(elem))
+  if (!(elem = malloc(sizeof(t_list))))
     return (1);
   elem->position = position;
   elem->x = position % 9;
