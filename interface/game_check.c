@@ -1,11 +1,11 @@
 /*
-** check.c for sudoki in /home/brout_m/RENDU/CPE/sudoki-bi/parsing
+** game_check.c for check in /home/duhieu_b/Prog_elem/sudoki-bi/interface
 **
-** Made by marc brout
-** Login   <brout_m@epitech.net>
+** Made by benjamin duhieu
+** Login   <duhieu_b@epitech.net>
 **
-** Started on  Sat Feb 27 00:49:25 2016 marc brout
-** Last update Sun Feb 28 12:15:28 2016 benjamin duhieu
+** Started on  Sun Feb 28 12:15:42 2016 benjamin duhieu
+** Last update Sun Feb 28 13:10:13 2016 benjamin duhieu
 */
 
 #include "sudoki.h"

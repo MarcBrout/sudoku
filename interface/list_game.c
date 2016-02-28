@@ -1,11 +1,11 @@
 /*
-** tab_and_list.c for sudoki in /home/brout_m/RENDU/CPE/sudoki-bi/parsing
+** list_game.c for gamelist in /home/duhieu_b/Prog_elem/sudoki-bi/interface
 **
-** Made by marc brout
-** Login   <brout_m@epitech.net>
+** Made by benjamin duhieu
+** Login   <duhieu_b@epitech.net>
 **
-** Started on  Sat Feb 27 00:58:19 2016 marc brout
-** Last update Sun Feb 28 12:16:18 2016 benjamin duhieu
+** Started on  Sun Feb 28 12:16:37 2016 benjamin duhieu
+** Last update Sun Feb 28 13:01:57 2016 benjamin duhieu
 */
 
 #include <stdlib.h>

@@ -1,14 +1,13 @@
 /*
-** free.c for sudoki in /home/brout_m/RENDU/CPE/sudoki-bi/parsing
+** free_game.c for free in /home/duhieu_b/Prog_elem/sudoki-bi/interface
 **
-** Made by marc brout
-** Login   <brout_m@epitech.net>
+** Made by benjamin duhieu
+** Login   <duhieu_b@epitech.net>
 **
-** Started on  Sat Feb 27 01:15:39 2016 marc brout
-** Last update Sun Feb 28 12:17:35 2016 benjamin duhieu
+** Started on  Sun Feb 28 12:17:49 2016 benjamin duhieu
+** Last update Sun Feb 28 13:01:12 2016 benjamin duhieu
 */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "sudoki.h"
 
