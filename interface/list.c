@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 20:41:09 2016 marc brout
-** Last update Sun Feb 28 16:22:54 2016 marc brout
+** Last update Sun Feb 28 17:10:17 2016 marc brout
 */
 
 #include <stdlib.h>
@@ -32,11 +32,11 @@ t_list		*new_sudoku(t_sudoku *sudoku, int size)
 
   if (!(list = create_list_list(size)))
     return (NULL);
-  initialize_list(sudoku->tab, list, size);
+  initialize_list(sudoku->tab, list);
   return (list);
 }
 
-void		initialize_list(char **tab, t_list *root, int size)
+void		initialize_list(char **tab, t_list *root)
 {
   int		i;
   t_list	*tmp;

@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:01:44 2016 benjamin duhieu
-** Last update Sun Feb 28 17:07:27 2016 benjamin duhieu
+** Last update Sun Feb 28 17:37:56 2016 benjamin duhieu
 */
 
 #ifndef GAME_H_
@@ -49,7 +49,27 @@ typedef struct		s_main
 int	init_main(t_main *);
 t_bunny_response	main_loop(void *);
 void	fill_screen(t_bunny_pixelarray *);
-
 void	disp_grid(t_bunny_pixelarray *, t_bunny_pixelarray *);
+
+/*
+** keyboard.c
+*/
+
+void			move_cur(t_list *root, t_list *cur,
+				 int move, int right);
+void			move_cur_square(t_sudoku *sudoku,
+					t_bunny_keysym keysym);
+t_bunny_response	keyboard(t_bunny_event_state state,
+				 t_bunny_keysym keysym,
+				 void *data);
+/*
+** list.c
+*/
+
+t_list	*new_sudoku(t_sudoku *, int);
+void	free_list(t_list *root);
+void	initialize_list(char **tab, t_list *root);
+t_list	*create_list_list(int size);
+int	add_one_list_to_root(t_list *root, int position);
 
 #endif /* !GAME_H_ */

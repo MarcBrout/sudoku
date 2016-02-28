@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:00:47 2016 benjamin duhieu
-** Last update Sun Feb 28 17:24:13 2016 benjamin duhieu
+** Last update Sun Feb 28 17:35:57 2016 benjamin duhieu
 */
 
 #include "sudoki.h"
@@ -87,6 +87,7 @@ int		main(int argc, char **argv)
   sudoki.cursudo = sudoki.sudoki->next;
   if (init_main(&sudoki) || init_game_lists(&sudoki))
     return (1);
+  bunny_set_key_response(keyboard);
   bunny_set_loop_main_function(main_loop);
   bunny_loop(sudoki.win, 60, &sudoki);
   bunny_delete_clipable(&(sudoki.pix->clipable));
