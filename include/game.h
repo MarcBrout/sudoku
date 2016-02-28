@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:01:44 2016 benjamin duhieu
-** Last update Sun Feb 28 13:27:50 2016 benjamin duhieu
+** Last update Sun Feb 28 13:47:57 2016 benjamin duhieu
 */
 
 #ifndef GAME_H_
@@ -22,8 +22,7 @@
 # define NUM8 ../interface/jpg/gold8.jpg
 # define NUM9 ../interface/jpg/gold9.jpg
 
-# include "basic.h"
-# include "advanced.h"
+# include "lapin.h"
 
 typedef	struct	s_image
 {
