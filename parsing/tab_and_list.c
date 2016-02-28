@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 00:58:19 2016 marc brout
-** Last update Sat Feb 27 11:22:55 2016 benjamin duhieu
+** Last update Sun Feb 28 00:06:02 2016 marc brout
 */
 
 #include <stdlib.h>
@@ -27,12 +27,12 @@ char		**set_tab()
   int		i;
 
   if (!(tmp = malloc(sizeof(char *) * 10)))
-    return (NULL);
+    return (my_puterrornull(MALLOC_ERROR));
   i = -1;
   while (++i < 9)
     {
       if (!(tmp[i] = malloc(10)))
-	return (NULL);
+	return (my_puterrornull(MALLOC_ERROR));
       tmp[i][9] = 0;
     }
   tmp[9] = NULL;

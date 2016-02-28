@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 22:16:06 2016 benjamin duhieu
-** Last update Sat Feb 27 23:44:40 2016 benjamin duhieu
+** Last update Sun Feb 28 00:17:26 2016 marc brout
 */
 
 #include <stdio.h>
@@ -41,6 +41,7 @@ int	nb_possib(char **grille)
 	    grille[i][j] = check(grille, i, j, tab);
 	}
     }
+  free(tab);
   return (0);
 }
 

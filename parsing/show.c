@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 00:54:57 2016 marc brout
-** Last update Sat Feb 27 23:19:00 2016 marc brout
+** Last update Sun Feb 28 00:10:30 2016 marc brout
 */
 
 #include <string.h>
@@ -30,7 +30,11 @@ void		show_valid_sudo(t_sudoku *sudos)
       x = -1;
       printf("|");
       while (++x < 9)
-	printf(" %c", sudos->tab[y][x]);
+	{
+	  if (sudos->tab[y][x] <= 9)
+	    sudos->tab[y][x] += 48;
+	  printf(" %c", sudos->tab[y][x]);
+	}
       printf("|\n");
     }
   printf("|------------------|\n");

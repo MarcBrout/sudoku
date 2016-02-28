@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sat Feb 27 11:24:58 2016 benjamin duhieu
-** Last update Sat Feb 27 11:28:48 2016 benjamin duhieu
+** Last update Sun Feb 28 00:19:07 2016 marc brout
 */
 
 #include "sudoki.h"
@@ -18,6 +18,7 @@ void		free_backtracing(t_case *root)
   while (elem != root)
     {
       elem = elem->next;
+      free(elem->prev->tab);
       free(elem->prev);
     }
   free(elem);
