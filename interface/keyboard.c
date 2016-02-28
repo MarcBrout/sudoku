@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sun Feb 28 14:28:25 2016 marc brout
-** Last update Sun Feb 28 17:00:14 2016 marc brout
+** Last update Sun Feb 28 17:17:00 2016 marc brout
 */
 
 #include "sudoki.h"
@@ -41,15 +41,13 @@ void			move_cur(t_list *root, t_list *cur,
 void			move_cur_square(t_sudoku *sudoku,
 					t_bunny_keysym keysym)
 {
-  int			i;
-
-  if (keysym == KEY_LEFT)
+  if (keysym == BKS_LEFT)
     move_cur(sudoku->squares, sudoku->cursquare, 1, 1);
-  if (keysym == KEY_RIGHT)
+  if (keysym == BKS_RIGHT)
     move_cur(sudoku->squares, sudoku->cursquare, 1, 0);
-  if (keysym == KEY_UP)
+  if (keysym == BKS_UP)
     move_cur(sudoku->squares, sudoku->cursquare, 9, 0);
-  if (keysym == KEY_DOWN)
+  if (keysym == BKS_DOWN)
     move_cur(sudoku->squares, sudoku->cursquare, 9, 1);
 }
 
@@ -63,7 +61,7 @@ t_bunny_response	keyboard(t_bunny_event_state state,
   if (keysym == BKS_ESCAPE && state == GO_DOWN)
     return (EXIT_ON_SUCCESS);
   if (state == GO_DOWN)
-    move_cur_square(sudoku->cursudo, keysym);
+    move_cur_square(sudoki->cursudo, keysym);
   if (state == GO_DOWN && keysym == BKS_N)
     {
       if (sudoki->cursudo->next)

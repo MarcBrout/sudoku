@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:00:47 2016 benjamin duhieu
-** Last update Sun Feb 28 17:01:37 2016 marc brout
+** Last update Sun Feb 28 17:06:56 2016 marc brout
 */
 
 #include "sudoki.h"
@@ -49,7 +49,7 @@ int	init_main(t_main *sudoki)
       !(sudoki->nbr.number[3] = bunny_load_pixelarray(NUM4)) ||
       !(sudoki->nbr.number[4] = bunny_load_pixelarray(NUM5)) ||
       !(sudoki->nbr.number[5] = bunny_load_pixelarray(NUM6)) ||
-      !(sudoki->nbr.number[6] = bunny_load_pixelarray(NUM7)) |
+      !(sudoki->nbr.number[6] = bunny_load_pixelarray(NUM7)) ||
       !(sudoki->nbr.number[7] = bunny_load_pixelarray(NUM8)) ||
       !(sudoki->nbr.number[8] = bunny_load_pixelarray(NUM9)))
     return (1);
