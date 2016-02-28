@@ -1,11 +1,11 @@
 /*
-** disp_to_screen.c for disp in /home/duhieu_b/Prog_elem/sudoki-bi/interface
+** disp_to_screen.c for disp in /home/duhieu_b/Prog_elem/sudoki-bi
 **
 ** Made by benjamin duhieu
 ** Login   <duhieu_b@epitech.net>
 **
-** Started on  Sun Feb 28 13:23:20 2016 benjamin duhieu
-** Last update Sun Feb 28 23:45:31 2016 marc brout
+** Started on  Mon Feb 29 00:41:49 2016 benjamin duhieu
+** Last update Mon Feb 29 00:41:53 2016 benjamin duhieu
 */
 
 #include <stdio.h>
