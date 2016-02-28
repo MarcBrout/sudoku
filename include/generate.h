@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 12:18:46 2016 marc brout
-** Last update Sun Feb 28 00:33:27 2016 marc brout
+** Last update Sun Feb 28 13:02:38 2016 marc brout
 */
 
 #ifndef GENERATE_H_
@@ -65,7 +65,7 @@ int		resolve_square(int i,
 			       t_square *square);
 void		reset_square(t_square *square);
 int		fill_list(t_square *root, int size);
-void		show_tab_int(t_square *root, int size,
+int		show_tab_int(t_square *root, int size,
 			     int difficulty);
 /*
 ** free.c
@@ -73,5 +73,22 @@ void		show_tab_int(t_square *root, int size,
 
 void		free_tab(int **tab);
 void		free_square(t_square *root);
+
+/*
+** show.c
+*/
+
+int		get_list_elem(t_square *root, int cell);
+int		**create_tab(int size);
+void		init_tab_show(int **tab, int size, int nb);
+int		count_how_many_cell(int **tab, int size);
+int		get_rand_valid_cell(int **tab, int size);
+
+/*
+** difficulty.c
+*/
+
+int		*difficultytab();
+int		show_tab(t_square *root, int **tab, int size);
 
 #endif /* !GENERATE_H_ */
