@@ -5,12 +5,12 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 22:08:26 2016 benjamin duhieu
-** Last update Sun Feb 28 23:44:30 2016 marc brout
+** Last update Mon Feb 29 00:34:34 2016 benjamin duhieu
 */
 
 #include "sudoki.h"
 
-void		print_game(t_main *sudoki);
+void		print_game(t_main *sudoki)
 {
   t_bunny_position	pos;
 
@@ -30,7 +30,9 @@ void		print_game(t_main *sudoki);
   position_square(sudoki->cursudo->cursquare, sudoki->pix);
 }
 
-void		new_nbr(t_list *elem, t_bunny_pixelarray *pix, unsigned *pixel)
+void		new_nbr(t_image *nbr,
+			t_list *elem, t_bunny_pixelarray *pix,
+			unsigned *pixel)
 {
   unsigned	*nb;
   int		i;
