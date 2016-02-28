@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:01:44 2016 benjamin duhieu
-** Last update Sun Feb 28 21:04:21 2016 benjamin duhieu
+** Last update Sun Feb 28 21:13:28 2016 benjamin duhieu
 */
 
 #ifndef GAME_H_
@@ -14,6 +14,7 @@
 # define HEIGHT 768
 # define GREY 0xFFBDBDBD
 # define MOVE "./interface/sound/menu_select.ogg"
+# define LOGO "./interface/bmp/sudoku-logo.png"
 # define GRID "./interface/bmp/grid.bmp"
 # define NUM1 "./interface/bmp/gold1.bmp"
 # define NUM2 "./interface/bmp/gold2.bmp"
@@ -63,7 +64,7 @@ void	position_square(t_list *, t_bunny_pixelarray *);
 */
 
 t_list			*move_cur(t_list *, t_list *, int, int);
-void			move_cur_square(t_sudoku *, t_bunny_keysym);
+void			move_cur_square(t_sudoku *, t_main *, t_bunny_keysym);
 t_bunny_response	keyboard(t_bunny_event_state, t_bunny_keysym, void *);
 void			input_number(t_main *data,
 				     t_sudoku *sudoku,
