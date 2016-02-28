@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sun Feb 28 14:28:25 2016 marc brout
-** Last update Sun Feb 28 19:28:57 2016 marc brout
+** Last update Sun Feb 28 20:58:03 2016 benjamin duhieu
 */
 
 #include <stdio.h>
@@ -44,13 +44,25 @@ void			move_cur_square(t_sudoku *sudoku,
 					t_bunny_keysym keysym)
 {
   if (keysym == BKS_LEFT)
-    sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 1, 1);
+    {
+      sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 1, 1);
+      bunny_sound_play(&sudoku->eff->sound);
+    }
   if (keysym == BKS_RIGHT)
-    sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 1, 0);
+    {
+      sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 1, 0);
+      bunny_sound_play(&sudoku->eff->sound);
+    }
   if (keysym == BKS_UP)
-    sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 9, 1);
+    {
+      sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 9, 1);
+      bunny_sound_play(&sudoku->eff->sound);
+    }
   if (keysym == BKS_DOWN)
-    sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 9, 0);
+    {
+      sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 9, 0);
+      bunny_sound_play(&sudoku->eff->sound);
+    }
 }
 
 void			input_number(t_sudoku *sudoku,

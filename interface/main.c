@@ -5,11 +5,12 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:00:47 2016 benjamin duhieu
-** Last update Sun Feb 28 19:50:23 2016 benjamin duhieu
+** Last update Sun Feb 28 20:58:38 2016 benjamin duhieu
 */
 
 #include "sudoki.h"
 #include <unistd.h>
+
 void		fill_screen(t_bunny_pixelarray *pix)
 {
   unsigned	*pixel;
@@ -29,12 +30,10 @@ t_bunny_response	main_loop(void	*data)
 
   sudoki = data;
   fill_screen(sudoki->pix);
-  /* wrong_number(sudoki->cursudo->cursquare, sudoki->cursudo->squares, */
-  /* 	       sudoki->nbr.grid); */
   disp_grid_black(sudoki->pix);
   disp_blank(sudoki->pix);
-  position_square(sudoki->cursudo->cursquare, sudoki->pix);
   put_nbr(&sudoki->nbr, sudoki->cursudo->squares, sudoki->pix);
+  position_square(sudoki->cursudo->cursquare, sudoki->pix);
   bunny_blit(&(sudoki->win->buffer), &(sudoki->pix->clipable), NULL);
   bunny_display(sudoki->win);
   return (GO_ON);
@@ -44,8 +43,6 @@ int	init_main(t_main *sudoki)
 {
   if (!(sudoki->pix = bunny_new_pixelarray(WIDTH, HEIGHT)) ||
       !(sudoki->win = bunny_start(WIDTH, HEIGHT, false, "sudoku")))
-    return (1);
-  if ((sudoki->nbr.grid = bunny_load_pixelarray(GRID)) == NULL)
     return (1);
   if (!(sudoki->nbr.number[0] = bunny_load_pixelarray(NUM1)) ||
       !(sudoki->nbr.number[1] = bunny_load_pixelarray(NUM2)) ||
@@ -57,6 +54,9 @@ int	init_main(t_main *sudoki)
       !(sudoki->nbr.number[7] = bunny_load_pixelarray(NUM8)) ||
       !(sudoki->nbr.number[8] = bunny_load_pixelarray(NUM9)))
     return (1);
+  if (!(sudoki->eff = bunny_load_effect(MOVE)))
+    return (1);
+  bunny_sound_volume(&sudoki->eff->sound, 40);
   return (0);
 }
 
@@ -91,8 +91,9 @@ int		main(int argc, char **argv)
   bunny_set_key_response(keyboard);
   bunny_set_loop_main_function(main_loop);
   bunny_loop(sudoki.win, 60, &sudoki);
-  bunny_delete_clipable(&(sudoki.pix->clipable));
+  delete_clip(&sudoki);
   bunny_stop(sudoki.win);
+  bunny_delete_sound(&sudoki.eff->sound);
   free_sudoku(sudoki.sudoki);
   return (0);
 }

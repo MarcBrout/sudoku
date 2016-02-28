@@ -5,76 +5,36 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 13:23:20 2016 benjamin duhieu
-** Last update Sun Feb 28 19:47:04 2016 benjamin duhieu
+** Last update Sun Feb 28 20:53:46 2016 benjamin duhieu
 */
 
 #include <stdio.h>
 #include "sudoki.h"
 
-/* void		go_to_red(t_list *squares, t_list *root, t_bunny_pixelarray *grid) */
-/* { */
-/*   t_list	*red; */
-/*   unsigned	*board; */
-/*   int		i; */
-/*   int		j; */
-
-/*   board	= (unsigned *)grid->pixels; */
-/*   red = root->next; */
-/*   while (red != root) */
-/*     { */
-/*       if (red->x == squares->x || red->y == squares->y || */
-/* 	  red->cube == squares->cube) */
-/* 	{ */
-/* 	  i = -1; */
-/* 	  while (++i < 51) */
-/* 	    { */
-/* 	      j = -1; */
-/* 	      while (++j < 51) */
-/* 		board[((5 * (red->cube % 3 + 1)) / 2 + ((red->x * 55) + j)) + */
-/* 		      ((red->y * 55) + i + (5 * (red->cube / 3 + 1)) / 2) * */
-/* 		       grid->clipable.clip_width] = RED; */
-/* 	    } */
-/* 	} */
-/*       red = red->next; */
-/*     } */
-/* } */
-
-/* void		wrong_number(t_list *squares, t_list *root, t_bunny_pixelarray *grid) */
-/* { */
-/*   t_list	*elem; */
-
-/*   elem = root->next; */
-/*   while (elem != root) */
-/*     { */
-/*       if (elem->x == squares->x || elem->y == squares->y || */
-/* 	  elem->cube == squares->cube) */
-/* 	{ */
-/* 	  if (elem->value == squares->value) */
-/* 	    { */
-/* 	      go_to_red(squares, root, grid); */
-/* 	      break ; */
-/* 	    } */
-/* 	} */
-/*       elem = elem->next; */
-/*     } */
-/* } */
-
 void		position_square(t_list *square, t_bunny_pixelarray *pix)
 {
-  unsigned	*board;
+  t_color	*board;
   int		i;
   int		j;
+  int		a;
+  int		b;
+  int		tot;
 
-  board = (unsigned *)pix->pixels;
+  board = (t_color *)pix->pixels;
   i = -1;
-  while (++i < 52)
+  a = (square->x % 9) / 3;
+  b = (square->y % 9) / 3;
+  while (++i < 52 - b)
     {
       j = -1;
-	while (++j < 52)
+	while (++j < 52 - a)
 	  {
-	    board[(((WIDTH / 2) - 195) + square->x * 53 + j + 5) +
-		  (((HEIGHT / 2) - 195) + square->y * 53 + i + 5)
-		  * pix->clipable.clip_width] = GREY;
+	    tot = (((WIDTH / 2) - 195) + (square->x * 53) + 2 * square->x - a + j) +
+	      (((HEIGHT / 2) - 195) + (square->y * 53) + 2 * square->y - b + i)
+	      * pix->clipable.clip_width;
+	    board[tot].argb[0] -= 20;
+	    board[tot].argb[1] -= 20;
+	    board[tot].argb[2] -= 20;
 	  }
     }
 }
@@ -86,6 +46,7 @@ void		put_nbr(t_image *nbr, t_list *sudo, t_bunny_pixelarray *pix)
   unsigned	*pixel;
   int		i;
   int		j;
+  int		a;
 
   pixel = (unsigned *)pix->pixels;
   elem = sudo->next;
@@ -93,15 +54,15 @@ void		put_nbr(t_image *nbr, t_list *sudo, t_bunny_pixelarray *pix)
     {
       if (elem->value)
 	{
-	  printf("elemx : %d && elemy : %d\n", elem->x, elem->y);
 	  nb = (unsigned *)nbr->number[elem->value - 1]->pixels;
+	  a = (elem->x % 9) / 3;
 	  i = -1;
 	  while (++i < nbr->number[elem->value - 1]->clipable.clip_height)
 	    {
 	      j = -1;
 	      while (++j < nbr->number[elem->value - 1]->clipable.clip_width)
-		pixel[(((WIDTH / 2) - 195) + elem->x * 53 + j + 5) +
-		      (((HEIGHT / 2) - 195) + elem->y * 53 + i + 5)
+		pixel[(((WIDTH / 2) - 195) + (elem->x * 53) + 2 * elem->x + j - a + 5) +
+		      (((HEIGHT / 2) - 195) + (elem->y * 53) + 2 * elem->y + i)
 		      * pix->clipable.clip_width] =
 		  nb[j + i * nbr->number[elem->value - 1]->clipable.clip_width];
 	    }

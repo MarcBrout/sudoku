@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:17:49 2016 benjamin duhieu
-** Last update Sun Feb 28 13:01:12 2016 benjamin duhieu
+** Last update Sun Feb 28 20:51:03 2016 benjamin duhieu
 */
 
 #include <stdlib.h>
@@ -44,4 +44,14 @@ void		free_sudoku(t_sudoku *sudo)
       tmp = tmp2;
     }
   free(sudo);
+}
+
+void		delete_clip(t_main *sudoki)
+{
+  int		i;
+
+  bunny_delete_clipable(&(sudoki->pix->clipable));
+  i = -1;
+  while (++i < 9)
+    bunny_delete_clipable(&(sudoki->nbr.number[i]->clipable));
 }

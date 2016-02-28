@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:01:44 2016 benjamin duhieu
-** Last update Sun Feb 28 19:41:19 2016 benjamin duhieu
+** Last update Sun Feb 28 21:00:20 2016 benjamin duhieu
 */
 
 #ifndef GAME_H_
@@ -13,6 +13,7 @@
 # define WIDTH 1024
 # define HEIGHT 768
 # define GREY 0xFFBDBDBD
+# define MOVE "./interface/sound/menu_select.ogg"
 # define GRID "./interface/bmp/grid.bmp"
 # define NUM1 "./interface/bmp/gold1.bmp"
 # define NUM2 "./interface/bmp/gold2.bmp"
@@ -29,7 +30,6 @@
 
 typedef	struct		s_image
 {
-  t_bunny_pixelarray	*grid;
   t_bunny_pixelarray	*number[9];
 }			t_image;
 
@@ -37,6 +37,7 @@ typedef struct		s_main
 {
   t_bunny_pixelarray	*pix;
   t_bunny_window	*win;
+  t_bunny_effect	*eff;
   t_image		nbr;
   t_sudoku		*cursudo;
   t_sudoku		*sudoki;
@@ -54,8 +55,6 @@ void	disp_blank(t_bunny_pixelarray *);
 void	disp_grid_black(t_bunny_pixelarray *);
 void	put_nbr(t_image *, t_list *, t_bunny_pixelarray *);
 void	position_square(t_list *, t_bunny_pixelarray *);
-/* void	wrong_number(t_list *, t_list *, t_bunny_pixelarray *); */
-void	go_to_red(t_list *, t_list *, t_bunny_pixelarray *);
 
 /*
 ** keyboard.c
@@ -74,5 +73,11 @@ void	free_list(t_list *);
 void	initialize_list(char **, t_list *);
 t_list	*create_list_list(int size);
 int	add_one_list_to_root(t_list *, int);
+
+/*
+** free_game.c
+*/
+
+void	delete_clip(t_main *);
 
 #endif /* !GAME_H_ */
