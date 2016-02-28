@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:01:44 2016 benjamin duhieu
-** Last update Sun Feb 28 21:00:20 2016 benjamin duhieu
+** Last update Sun Feb 28 21:04:21 2016 benjamin duhieu
 */
 
 #ifndef GAME_H_
@@ -41,6 +41,8 @@ typedef struct		s_main
   t_image		nbr;
   t_sudoku		*cursudo;
   t_sudoku		*sudoki;
+  int			vic;
+  int			lose;
 }			t_main;
 
 /*
@@ -60,9 +62,12 @@ void	position_square(t_list *, t_bunny_pixelarray *);
 ** keyboard.c
 */
 
-t_list	*move_cur(t_list *, t_list *, int, int);
-void	move_cur_square(t_sudoku *, t_bunny_keysym);
+t_list			*move_cur(t_list *, t_list *, int, int);
+void			move_cur_square(t_sudoku *, t_bunny_keysym);
 t_bunny_response	keyboard(t_bunny_event_state, t_bunny_keysym, void *);
+void			input_number(t_main *data,
+				     t_sudoku *sudoku,
+				     t_bunny_keysym keysym);
 
 /*
 ** list.c
@@ -79,5 +84,14 @@ int	add_one_list_to_root(t_list *, int);
 */
 
 void	delete_clip(t_main *);
+
+/*
+** compare.c
+*/
+
+void	reset_grid(t_list *root);
+int	compare_lists(t_list *list, t_list *test);
+int	check_existant(t_list *root, t_list *list);
+void	check_whole_grid(t_main *data, t_list *root);
 
 #endif /* !GAME_H_ */
