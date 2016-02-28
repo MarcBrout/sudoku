@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:01:44 2016 benjamin duhieu
-** Last update Mon Feb 29 00:32:55 2016 benjamin duhieu
+** Last update Mon Feb 29 00:49:57 2016 marc brout
 */
 
 #ifndef GAME_H_
@@ -83,6 +83,8 @@ t_bunny_response	keyboard(t_bunny_event_state, t_bunny_keysym, void *);
 void			input_number(t_main *data,
 				     t_sudoku *sudoku,
 				     t_bunny_keysym keysym);
+void			test_number(t_sudoku *sudoku,
+				    t_bunny_keysym keysym);
 
 /*
 ** list.c

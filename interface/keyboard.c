@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sun Feb 28 14:28:25 2016 marc brout
-** Last update Sun Feb 28 21:57:26 2016 marc brout
+** Last update Mon Feb 29 00:50:16 2016 marc brout
 */
 
 #include <stdio.h>
@@ -65,15 +65,24 @@ void			move_cur_square(t_sudoku *sudoku, t_main *sud,
     }
 }
 
+void			test_number(t_sudoku *sudoku,
+				    t_bunny_keysym keysym)
+{
+  if (keysym == BKS_9)
+    sudoku->cursquare->value = 8;
+  else if (keysym == BKS_8)
+    sudoku->cursquare->value = 9;
+  else
+    sudoku->cursquare->value = keysym - 26;
+  sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 1, 0);
+}
+
 void			input_number(t_main *data,
 				     t_sudoku *sudoku,
 				     t_bunny_keysym keysym)
 {
   if (keysym >= BKS_0 && keysym <= BKS_9 && !sudoku->cursquare->lock)
-    {
-      sudoku->cursquare->value = keysym - 26;
-      sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 1, 0);
-    }
+    test_number(sudoku, keysym);
   if (keysym == BKS_RETURN)
     check_whole_grid(data, sudoku->squares);
   if (keysym == BKS_R)
