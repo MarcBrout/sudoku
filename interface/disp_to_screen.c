@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 13:23:20 2016 benjamin duhieu
-** Last update Sun Feb 28 22:13:34 2016 benjamin duhieu
+** Last update Sun Feb 28 23:45:31 2016 marc brout
 */
 
 #include <stdio.h>
@@ -63,31 +63,14 @@ void		position_square(t_list *square, t_bunny_pixelarray *pix)
 void		put_nbr(t_image *nbr, t_list *sudo, t_bunny_pixelarray *pix)
 {
   t_list	*elem;
-  unsigned	*nb;
   unsigned	*pixel;
-  int		i;
-  int		j;
-  int		a;
 
   pixel = (unsigned *)pix->pixels;
   elem = sudo->next;
   while (elem != sudo)
     {
       if (elem->value)
-	{
-	  nb = (unsigned *)nbr->number[elem->value - 1]->pixels;
-	  a = (elem->x % 9) / 3;
-	  i = -1;
-	  while (++i < nbr->number[elem->value - 1]->clipable.clip_height)
-	    {
-	      j = -1;
-	      while (++j < nbr->number[elem->value - 1]->clipable.clip_width)
-		pixel[(((WIDTH / 2) - 195) + (elem->x * 53) + 2 * elem->x + j - a + 5) +
-		      (((HEIGHT / 2) - 195) + (elem->y * 53) + 2 * elem->y + i)
-		      * pix->clipable.clip_width] =
-		  nb[j + i * nbr->number[elem->value - 1]->clipable.clip_width];
-	    }
-	}
+	new_nbr(nbr, elem, pix, pixel);
       elem = elem->next;
     }
 }

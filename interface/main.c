@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:00:47 2016 benjamin duhieu
-** Last update Sun Feb 28 22:41:47 2016 marc brout
+** Last update Sun Feb 28 23:39:03 2016 marc brout
 */
 
 #include <unistd.h>
@@ -27,25 +27,11 @@ void		fill_screen(t_bunny_pixelarray *pix)
 t_bunny_response	main_loop(void	*data)
 {
   t_main		*sudoki;
-  t_bunny_position	pos;
 
   sudoki = data;
+  print_game(sudoki);
   if ((sudoki->vic || sudoki->lose) && sudoki->nbr.x > 820)
     sudoki->nbr.x--;
-  fill_screen(sudoki->pix);
-  pos.x = 5;
-  pos.y = 5;
-  disp_logo(sudoki->nbr.logo, sudoki->pix, &pos);
-  pos.x = 650;
-  pos.y = 35;
-  disp_logo(sudoki->nbr.creator, sudoki->pix, &pos);
-  pos.x = 10;
-  pos.y = 300;
-  disp_logo(sudoki->nbr.inst, sudoki->pix, &pos);
-  disp_grid_black(sudoki->pix);
-  disp_blank(sudoki->pix);
-  put_nbr(&sudoki->nbr, sudoki->cursudo->squares, sudoki->pix);
-  position_square(sudoki->cursudo->cursquare, sudoki->pix);
   if (sudoki->vic)
     print_victory(sudoki->pix, sudoki->nbr.victory, sudoki->nbr.x);
   if (sudoki->lose)
