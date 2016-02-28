@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sun Feb 28 14:28:25 2016 marc brout
-** Last update Sun Feb 28 21:03:05 2016 benjamin duhieu
+** Last update Sun Feb 28 21:05:58 2016 benjamin duhieu
 */
 
 #include <stdio.h>
@@ -40,28 +40,28 @@ t_list			*move_cur(t_list *root, t_list *cur,
   return (cur);
 }
 
-void			move_cur_square(t_sudoku *sudoku,
+void			move_cur_square(t_sudoku *sudoku, t_main *sud,
 					t_bunny_keysym keysym)
 {
   if (keysym == BKS_LEFT)
     {
       sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 1, 1);
-      bunny_sound_play(&sudoku->eff->sound);
+      bunny_sound_play(&sud->eff->sound);
     }
   if (keysym == BKS_RIGHT)
     {
       sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 1, 0);
-      bunny_sound_play(&sudoku->eff->sound);
+      bunny_sound_play(&sud->eff->sound);
     }
   if (keysym == BKS_UP)
     {
       sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 9, 1);
-      bunny_sound_play(&sudoku->eff->sound);
+      bunny_sound_play(&sud->eff->sound);
     }
   if (keysym == BKS_DOWN)
     {
       sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 9, 0);
-      bunny_sound_play(&sudoku->eff->sound);
+      bunny_sound_play(&sud->eff->sound);
     }
 }
 
@@ -96,7 +96,7 @@ t_bunny_response	keyboard(t_bunny_event_state state,
     return (EXIT_ON_SUCCESS);
   if (state == GO_DOWN)
     {
-      move_cur_square(sudoki->cursudo, keysym);
+      move_cur_square(sudoki->cursudo, sudoki, keysym);
       input_number(data, sudoki->cursudo, keysym);
     }
   if (state == GO_DOWN && keysym == BKS_N)

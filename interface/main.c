@@ -1,3 +1,4 @@
+
 /*
 1;2802;0c** main.c for main in /home/duhieu_b/Prog_elem/sudoki-bi/interface
 **
@@ -5,11 +6,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:00:47 2016 benjamin duhieu
-<<<<<<< HEAD
-** Last update Sun Feb 28 20:58:38 2016 benjamin duhieu
-=======
-** Last update Sun Feb 28 20:59:50 2016 marc brout
->>>>>>> 7804be7245621779db29aeff07642123213e8f4b
+** Last update Sun Feb 28 21:13:47 2016 benjamin duhieu
 */
 
 #include "sudoki.h"
@@ -60,7 +57,7 @@ int	init_main(t_main *sudoki)
     return (1);
   if (!(sudoki->eff = bunny_load_effect(MOVE)))
     return (1);
-  bunny_sound_volume(&sudoki->eff->sound, 40);
+  bunny_sound_volume(&sudoki->eff->sound, 5);
   return (0);
 }
 
