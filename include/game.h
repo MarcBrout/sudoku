@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:01:44 2016 benjamin duhieu
-** Last update Sun Feb 28 17:50:27 2016 benjamin duhieu
+** Last update Sun Feb 28 19:25:22 2016 benjamin duhieu
 */
 
 #ifndef GAME_H_
@@ -50,10 +50,11 @@ int	init_main(t_main *);
 t_bunny_response	main_loop(void *);
 void	fill_screen(t_bunny_pixelarray *);
 
-void	disp_grid(t_bunny_pixelarray *, t_bunny_pixelarray *);
-void	put_nbr(t_image *, t_list *);
-void	position_square(t_list *, t_bunny_pixelarray *);
-void	wrong_number(t_list *, t_list *, t_bunny_pixelarray *);
+void	disp_blank(t_bunny_pixelarray *);
+void	disp_grid_black(t_bunny_pixelarray *);
+void	put_nbr(t_image *, t_list *, t_bunny_pixelarray *);
+/* void	position_square(t_list *, t_bunny_pixelarray *); */
+/* void	wrong_number(t_list *, t_list *, t_bunny_pixelarray *); */
 void	go_to_red(t_list *, t_list *, t_bunny_pixelarray *);
 
 /*
