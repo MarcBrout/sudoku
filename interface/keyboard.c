@@ -5,18 +5,19 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sun Feb 28 14:28:25 2016 marc brout
-** Last update Sun Feb 28 17:17:00 2016 marc brout
+** Last update Sun Feb 28 19:28:57 2016 marc brout
 */
 
+#include <stdio.h>
 #include "sudoki.h"
 
-void			move_cur(t_list *root, t_list *cur,
-				 int move, int right)
+t_list			*move_cur(t_list *root, t_list *cur,
+				  int move, int right)
 {
   int			i;
 
   i = -1;
-  if (right)
+  if (!right)
     {
       while (++i < move)
 	{
@@ -36,19 +37,27 @@ void			move_cur(t_list *root, t_list *cur,
 	    cur = cur->prev;
 	}
     }
+  return (cur);
 }
 
 void			move_cur_square(t_sudoku *sudoku,
 					t_bunny_keysym keysym)
 {
   if (keysym == BKS_LEFT)
-    move_cur(sudoku->squares, sudoku->cursquare, 1, 1);
+    sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 1, 1);
   if (keysym == BKS_RIGHT)
-    move_cur(sudoku->squares, sudoku->cursquare, 1, 0);
+    sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 1, 0);
   if (keysym == BKS_UP)
-    move_cur(sudoku->squares, sudoku->cursquare, 9, 0);
+    sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 9, 1);
   if (keysym == BKS_DOWN)
-    move_cur(sudoku->squares, sudoku->cursquare, 9, 1);
+    sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 9, 0);
+}
+
+void			input_number(t_sudoku *sudoku,
+					t_bunny_keysym keysym)
+{
+  if (keysym >= BKS_0 && keysym <= BKS_9 && !sudoku->cursquare->lock)
+    sudoku->cursquare->value = keysym - 26;
 }
 
 t_bunny_response	keyboard(t_bunny_event_state state,
@@ -61,7 +70,10 @@ t_bunny_response	keyboard(t_bunny_event_state state,
   if (keysym == BKS_ESCAPE && state == GO_DOWN)
     return (EXIT_ON_SUCCESS);
   if (state == GO_DOWN)
-    move_cur_square(sudoki->cursudo, keysym);
+    {
+      move_cur_square(sudoki->cursudo, keysym);
+      input_number(sudoki->cursudo, keysym);
+    }
   if (state == GO_DOWN && keysym == BKS_N)
     {
       if (sudoki->cursudo->next)
