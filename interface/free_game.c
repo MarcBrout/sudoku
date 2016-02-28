@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:17:49 2016 benjamin duhieu
-** Last update Sun Feb 28 20:51:03 2016 benjamin duhieu
+** Last update Sun Feb 28 22:38:23 2016 marc brout
 */
 
 #include <stdlib.h>
@@ -30,6 +30,21 @@ void		free_tab(char **tab)
   free(tab);
 }
 
+void		free_thus_list(t_list *root)
+{
+  t_list	*tmp;
+  t_list	*tmp2;
+
+  tmp = root->next;
+  while (tmp != root)
+    {
+      tmp2 = tmp->next;
+      free(tmp);
+      tmp = tmp2;
+    }
+  free(root);
+}
+
 void		free_sudoku(t_sudoku *sudo)
 {
   t_sudoku	*tmp;
@@ -40,6 +55,7 @@ void		free_sudoku(t_sudoku *sudo)
     {
       tmp2 = tmp->next;
       free_tab(tmp->tab);
+      free_thus_list(tmp->squares);
       free(tmp);
       tmp = tmp2;
     }
@@ -51,6 +67,8 @@ void		delete_clip(t_main *sudoki)
   int		i;
 
   bunny_delete_clipable(&(sudoki->pix->clipable));
+  bunny_delete_clipable(&(sudoki->nbr.victory->clipable));
+  bunny_delete_clipable(&(sudoki->nbr.defeat->clipable));
   i = -1;
   while (++i < 9)
     bunny_delete_clipable(&(sudoki->nbr.number[i]->clipable));

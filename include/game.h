@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:01:44 2016 benjamin duhieu
-** Last update Sun Feb 28 21:13:28 2016 benjamin duhieu
+** Last update Sun Feb 28 22:18:46 2016 marc brout
 */
 
 #ifndef GAME_H_
@@ -25,6 +25,8 @@
 # define NUM7 "./interface/bmp/gold7.bmp"
 # define NUM8 "./interface/bmp/gold8.bmp"
 # define NUM9 "./interface/bmp/gold9.bmp"
+# define VICTORY "./interface/bmp/victory.png"
+# define DEFEAT "./interface/bmp/defeat.jpg"
 
 # include "lapin.h"
 # include "parser.h"
@@ -32,6 +34,9 @@
 typedef	struct		s_image
 {
   t_bunny_pixelarray	*number[9];
+  t_bunny_pixelarray	*victory;
+  t_bunny_pixelarray	*defeat;
+  int			x;
 }			t_image;
 
 typedef struct		s_main
@@ -94,5 +99,13 @@ void	reset_grid(t_list *root);
 int	compare_lists(t_list *list, t_list *test);
 int	check_existant(t_list *root, t_list *list);
 void	check_whole_grid(t_main *data, t_list *root);
+
+/*
+** victory.c
+*/
+
+void	print_victory(t_bunny_pixelarray *back,
+		      t_bunny_pixelarray *victory,
+		      int x);
 
 #endif /* !GAME_H_ */

@@ -1,4 +1,3 @@
-
 /*
 ** show.c for sudoki in /home/brout_m/RENDU/CPE/sudoki-bi
 **
@@ -6,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sun Feb 28 11:31:00 2016 marc brout
-** Last update Sun Feb 28 13:03:07 2016 marc brout
+** Last update Sun Feb 28 22:27:01 2016 marc brout
 */
 
 #include <stdlib.h>

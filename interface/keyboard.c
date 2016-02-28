@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sun Feb 28 14:28:25 2016 marc brout
-** Last update Sun Feb 28 21:05:58 2016 benjamin duhieu
+** Last update Sun Feb 28 21:57:26 2016 marc brout
 */
 
 #include <stdio.h>
@@ -82,6 +82,7 @@ void			input_number(t_main *data,
       data->vic = 0;
       data->lose = 0;
       sudoku->cursquare = sudoku->squares->next;
+      data->nbr.x = WIDTH;
     }
 }
 

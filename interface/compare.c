@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sun Feb 28 19:57:39 2016 marc brout
-** Last update Sun Feb 28 21:10:26 2016 marc brout
+** Last update Sun Feb 28 22:10:03 2016 marc brout
 */
 
 #include	"game.h"
@@ -26,12 +26,15 @@ void		reset_grid(t_list *root)
 
 int		compare_lists(t_list *list, t_list *test)
 {
-  if (list->x == test->x && list->value == test->value)
-    return (1);
-  if (list->y == test->y && list->value == test->value)
-    return (1);
-  if (list->cube == test->cube && list->value == test->value)
-    return (1);
+  if (list->position != test->position)
+    {
+      if (list->x == test->x && list->value == test->value)
+	return (1);
+      if (list->y == test->y && list->value == test->value)
+	return (1);
+      if (list->cube == test->cube && list->value == test->value)
+	return (1);
+    }
   return (0);
 }
 
