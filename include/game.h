@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:01:44 2016 benjamin duhieu
-** Last update Sun Feb 28 15:44:08 2016 marc brout
+** Last update Sun Feb 28 15:51:57 2016 marc brout
 */
 
 #ifndef GAME_H_
@@ -47,9 +47,11 @@ typedef struct		s_main
   t_bunny_pixelarray	*pix;
   t_bunny_window	*win;
   t_image		nbr;
+  t_square		*cursudo;
   t_square		*sudoki;
   t_list		list;
-  int			first_game;
+  int			nbgame;
+  int			new_game;
 }			t_main;
 
 /*

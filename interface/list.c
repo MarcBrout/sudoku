@@ -5,11 +5,26 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 20:41:09 2016 marc brout
-** Last update Sun Feb 28 15:44:33 2016 marc brout
+** Last update Sun Feb 28 15:47:32 2016 marc brout
 */
 
 #include <stdlib.h>
 #include "game.h"
+
+void		free_list(t_list *root)
+{
+  t_list	*tmp;
+  t_list	*tmp2;
+
+  tmp = root->next;
+  while (tmp && tmp != root)
+    {
+      tmp2 = tmp->next;
+      free(tmp);
+      tmp = tmp2;
+    }
+  free(root);
+}
 
 t_list		*new_sudoku(t_square *sudoku, int size)
 {

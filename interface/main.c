@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:00:47 2016 benjamin duhieu
-** Last update Sun Feb 28 13:47:07 2016 benjamin duhieu
+** Last update Sun Feb 28 15:56:01 2016 marc brout
 */
 
 #include "sudoki.h"
@@ -28,6 +28,7 @@ t_bunny_response	main_loop(void	*data)
   t_main		*sudoki;
 
   sudoki = data;
+
   fill_screen(sudoki->pix);
   disp_grid(sudoki->pix, sudoki->nbr.grid);
   bunny_blit(&(sudoki->win->buffer), &(sudoki->pix->clipable), NULL);
@@ -66,6 +67,8 @@ int		main(int argc, char **argv)
   if (!(tmp = parse_input()))
     return (1);
   init_main(&sudoki);
+  sudoki.first_game = 1;
+  sudoki.new_game = 0;
   bunny_set_loop_main_function(main_loop);
   bunny_loop(sudoki.win, 60, &sudoki);
   bunny_delete_clipable(&(sudoki.pix->clipable));
