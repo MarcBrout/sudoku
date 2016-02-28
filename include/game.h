@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:01:44 2016 benjamin duhieu
-** Last update Sun Feb 28 19:25:22 2016 benjamin duhieu
+** Last update Sun Feb 28 19:37:52 2016 marc brout
 */
 
 #ifndef GAME_H_
@@ -61,7 +61,7 @@ void	go_to_red(t_list *, t_list *, t_bunny_pixelarray *);
 ** keyboard.c
 */
 
-void	move_cur(t_list *, t_list *, int, int);
+t_list	*move_cur(t_list *, t_list *, int, int);
 void	move_cur_square(t_sudoku *, t_bunny_keysym);
 t_bunny_response	keyboard(t_bunny_event_state, t_bunny_keysym, void *);
 

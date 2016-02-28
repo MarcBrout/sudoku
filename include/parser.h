@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 23:08:11 2016 marc brout
-** Last update Sun Feb 28 16:26:28 2016 marc brout
+** Last update Sun Feb 28 19:13:36 2016 marc brout
 */
 
 #ifndef PARSER_H_
@@ -24,6 +24,7 @@ typedef struct		s_list
   int			y;
   int			cube;
   int			value;
+  int			lock;
   struct s_list		*next;
   struct s_list		*prev;
 }			t_list;

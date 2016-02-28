@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 20:41:09 2016 marc brout
-** Last update Sun Feb 28 17:10:17 2016 marc brout
+** Last update Sun Feb 28 19:14:47 2016 marc brout
 */
 
 #include <stdlib.h>
@@ -46,7 +46,12 @@ void		initialize_list(char **tab, t_list *root)
   while (i < 81 && tmp && tmp != root)
     {
       if (tab[i / 9][i % 9] != ' ')
-	tmp->value = tab[i / 9][i % 9] - 48;
+	{
+	  tmp->value = tab[i / 9][i % 9] - 48;
+	  tmp->lock = 1;
+	}
+      else
+	tmp->lock = 0;
       tmp = tmp->next;
       i = i + 1;
     }
