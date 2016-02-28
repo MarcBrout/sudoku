@@ -5,11 +5,11 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:00:47 2016 benjamin duhieu
-** Last update Sun Feb 28 17:42:31 2016 benjamin duhieu
+** Last update Sun Feb 28 18:23:21 2016 benjamin duhieu
 */
 
 #include "sudoki.h"
-
+#include <unistd.h>
 void		fill_screen(t_bunny_pixelarray *pix)
 {
   unsigned	*pixel;
@@ -29,8 +29,8 @@ t_bunny_response	main_loop(void	*data)
 
   sudoki = data;
   fill_screen(sudoki->pix);
-  wrong_number(sudoki->cursudo->cursquare, sudoki->cursudo->squares,
-	       sudoki->nbr.grid);
+  /* wrong_number(sudoki->cursudo->cursquare, sudoki->cursudo->squares, */
+  /* 	       sudoki->nbr.grid); */
   position_square(sudoki->cursudo->cursquare, sudoki->nbr.grid);
   put_nbr(&sudoki->nbr, sudoki->cursudo->squares);
   disp_grid(sudoki->pix, sudoki->nbr.grid);

@@ -5,57 +5,59 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 13:23:20 2016 benjamin duhieu
-** Last update Sun Feb 28 17:35:04 2016 benjamin duhieu
+** Last update Sun Feb 28 18:24:04 2016 benjamin duhieu
 */
 
+#include <stdio.h>
 #include "sudoki.h"
 
-void		go_to_red(t_list *squares, t_list *root, t_bunny_pixelarray *grid)
-{
-  t_list	*red;
-  unsigned	*board;
-  int		i;
-  int		j;
+/* void		go_to_red(t_list *squares, t_list *root, t_bunny_pixelarray *grid) */
+/* { */
+/*   t_list	*red; */
+/*   unsigned	*board; */
+/*   int		i; */
+/*   int		j; */
 
-  board	= (unsigned *)grid->pixels;
-  red = root->next;
-  while (red != root)
-    {
-      if (red->x == squares->x || red->y == squares->y ||
-	  red->cube == squares->cube)
-	{
-	  i = -1;
-	  while (++i < 55)
-	    {
-	      j = -1;
-	      while (++j < 55)
-		board[((red->x * 55) + j) + ((red->y * 55) + i) *
-		      grid->clipable.clip_width] = RED;
-	    }
-	}
-      red = red->next;
-    }
-}
+/*   board	= (unsigned *)grid->pixels; */
+/*   red = root->next; */
+/*   while (red != root) */
+/*     { */
+/*       if (red->x == squares->x || red->y == squares->y || */
+/* 	  red->cube == squares->cube) */
+/* 	{ */
+/* 	  i = -1; */
+/* 	  while (++i < 51) */
+/* 	    { */
+/* 	      j = -1; */
+/* 	      while (++j < 51) */
+/* 		board[((5 * (red->cube % 3 + 1)) / 2 + ((red->x * 55) + j)) + */
+/* 		      ((red->y * 55) + i + (5 * (red->cube / 3 + 1)) / 2) * */
+/* 		       grid->clipable.clip_width] = RED; */
+/* 	    } */
+/* 	} */
+/*       red = red->next; */
+/*     } */
+/* } */
 
-void		wrong_number(t_list *squares, t_list *root, t_bunny_pixelarray *grid)
-{
-  t_list	*elem;
+/* void		wrong_number(t_list *squares, t_list *root, t_bunny_pixelarray *grid) */
+/* { */
+/*   t_list	*elem; */
 
-  elem = root->next;
-  while (elem != root)
-    {
-      if (elem->x == squares->x || elem->y == squares->y ||
-	  elem->cube == squares->cube)
-	{
-	  if (elem->value == squares->value)
-	    {
-	      go_to_red(squares, root, grid);
-	      break ;
-	    }
-	}
-      elem = elem->next;
-    }
-}
+/*   elem = root->next; */
+/*   while (elem != root) */
+/*     { */
+/*       if (elem->x == squares->x || elem->y == squares->y || */
+/* 	  elem->cube == squares->cube) */
+/* 	{ */
+/* 	  if (elem->value == squares->value) */
+/* 	    { */
+/* 	      go_to_red(squares, root, grid); */
+/* 	      break ; */
+/* 	    } */
+/* 	} */
+/*       elem = elem->next; */
+/*     } */
+/* } */
 
 void		position_square(t_list *square, t_bunny_pixelarray *grid)
 {
@@ -65,10 +67,10 @@ void		position_square(t_list *square, t_bunny_pixelarray *grid)
 
   board = (unsigned *)grid->pixels;
   i = -1;
-  while (i < 55)
+  while (++i < 55)
     {
       j = -1;
-      while (j < 55)
+      while (++j < 55)
 	board[((square->x * 55) + j) + ((square->y * 55) + i) *
 	      grid->clipable.clip_width] = GREY;
     }
@@ -88,18 +90,19 @@ void		put_nbr(t_image *nbr, t_list *sudo)
     {
       if (elem->value)
 	{
+	  printf("value = %d\n", elem->value);
 	  nb = (unsigned *)nbr->number[elem->value - 1]->pixels;
 	  i = -1;
 	  while (++i < nbr->number[elem->value - 1]->clipable.clip_height)
 	    {
 	      j = -1;
 	      while (++j < nbr->number[elem->value - 1]->clipable.clip_width)
-		board[((sudo->x * 55) + j) +
-		      ((sudo->y * 55) + i) * nbr->grid->clipable.clip_width] =
+		board[((elem->x * 55) + j) +
+		      ((elem->y * 55) + i) * nbr->grid->clipable.clip_width] =
 		  nb[j + i * nbr->number[elem->value - 1]->clipable.clip_width];
 	    }
-	  elem = elem->next;
 	}
+      elem = elem->next;
     }
 }
 
