@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 23:08:11 2016 marc brout
-** Last update Sat Feb 27 23:29:48 2016 marc brout
+** Last update Sun Feb 28 16:26:28 2016 marc brout
 */
 
 #ifndef PARSER_H_
@@ -14,10 +14,28 @@
 # define MAP_ERROR "MAP ERROR\n"
 # define MALLOC_ERROR "Memory allocation error, program exited.\n"
 
+# ifndef INTERFACE
+#  define INTERFACE
+
+typedef struct		s_list
+{
+  int			position;
+  int			x;
+  int			y;
+  int			cube;
+  int			value;
+  struct s_list		*next;
+  struct s_list		*prev;
+}			t_list;
+
+# endif /* !INTERFACE */
+
 typedef struct		s_sudoku
 {
   int			valid;
   char			**tab;
+  t_list		*squares;
+  t_list		*cursquare;
   struct s_sudoku	*next;
 }			t_sudoku;
 

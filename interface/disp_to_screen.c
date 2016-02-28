@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 13:23:20 2016 benjamin duhieu
-** Last update Sun Feb 28 16:31:34 2016 benjamin duhieu
+** Last update Sun Feb 28 16:49:51 2016 benjamin duhieu
 */
 
 #include "sudoki.h"
@@ -26,10 +26,10 @@ void		put_nbr(t_image *nbr, t_list *sudo)
 	{
 	  nb = (unsigned *)nbr->number[elem->value - 1]->pixels;
 	  i = -1;
-	  while (++i < nbr->number->[elem->value - 1]->clipable.clip_height)
+	  while (++i < nbr->number[elem->value - 1]->clipable.clip_height)
 	    {
 	      j = -1;
-	      while (++j < nbr->number->[elem->value - 1]->clipable.clip_width)
+	      while (++j < nbr->number[elem->value - 1]->clipable.clip_width)
 		board[((sudo->x * 55) + j) +
 		      ((sudo->y * 55) + i) * nbr->grid->clipable.clip_width] =
 		  nb[j + i * nbr->number[elem->value - 1]->clipable.clip_width];
