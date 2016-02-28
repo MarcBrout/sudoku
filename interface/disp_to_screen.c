@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 13:23:20 2016 benjamin duhieu
-** Last update Sun Feb 28 18:43:38 2016 marc brout
+** Last update Sun Feb 28 19:37:33 2016 marc brout
 */
 
 #include <stdio.h>
@@ -76,15 +76,15 @@ void		position_square(t_list *square, t_bunny_pixelarray *grid)
     }
 }
 
-void		put_nbr(t_image *nbr, t_list *sudo)
+void		put_nbr(t_image *nbr, t_list *sudo, t_bunny_pixelarray *pix)
 {
   t_list	*elem;
-  unsigned	*board;
   unsigned	*nb;
+  unsigned	*pixel;
   int		i;
   int		j;
 
-  board = (unsigned *)nbr->grid->pixels;
+  pixel = (unsigned *)pix->pixels;
   elem = sudo->next;
   while (elem != sudo)
     {
@@ -96,8 +96,9 @@ void		put_nbr(t_image *nbr, t_list *sudo)
 	    {
 	      j = -1;
 	      while (++j < nbr->number[elem->value - 1]->clipable.clip_width)
-		board[((elem->x * 55) + j) +
-		      ((elem->y * 55) + i) * nbr->grid->clipable.clip_width] =
+		pixel[(((WIDTH / 2) - 195) + sudo->x * 53 + j + 5) +
+		      (((HEIGHT / 2) - 195) + sudo->y * 53 + i + 5)
+		      * pix->clipable.clip_width] =
 		  nb[j + i * nbr->number[elem->value - 1]->clipable.clip_width];
 	    }
 	}
@@ -105,23 +106,44 @@ void		put_nbr(t_image *nbr, t_list *sudo)
     }
 }
 
-void		disp_grid(t_bunny_pixelarray *pix, t_bunny_pixelarray *grid)
+void		disp_blank(t_bunny_pixelarray *pix)
+{
+  int		i;
+  int		j;
+  unsigned	*pixel;
+
+  pixel = (unsigned *)pix->pixels;
+  i = -1;
+  while (++i < 504)
+    {
+      j = -1;
+      if ((i > 7 && i < 59) || (i > 60 && i < 113) || (i > 114 && i < 167)
+	  || (i > 171 && i < 224) || (i > 225 && i < 278) || (i > 279 && i < 331)
+	  || (i > 335 && i < 387) || (i > 388 && i < 440) || (i > 441 && i < 496))
+	while (++j < 504)
+	  {
+	    if ((j > 7 && j < 59) || (j > 60 && j < 113) || (j > 114 && j < 167)
+	    	|| (j > 171 && j < 224) || (j > 225 && j < 278) || (j > 279 && j < 331)
+	    	|| (j > 335 && j < 387) || (j > 388 && j < 440) || (j > 441 && j < 496))
+	      pixel[(((WIDTH / 2) - 202) + j) + (((HEIGHT / 2) - (202)) + i)
+		    * pix->clipable.clip_width] = WHITE;
+	  }
+    }
+}
+
+void		disp_grid_black(t_bunny_pixelarray *pix)
 {
   unsigned	*pixel;
-  unsigned	*board;
   int		i;
   int		j;
 
   pixel = (unsigned *)pix->pixels;
-  board = (unsigned *)grid->pixels;
   i = -1;
-  while (++i < grid->clipable.clip_height)
+  while (++i < 504)
     {
       j = -1;
-      while (++j < grid->clipable.clip_width)
-	pixel[(((WIDTH / 2) - (grid->clipable.clip_width / 2)) + j) +
-	      (((HEIGHT / 2) - (grid->clipable.clip_height / 2)) + i)
-	      * pix->clipable.clip_width] =
-	  board[j + i * grid->clipable.clip_width];
+      while (++j < 504)
+	pixel[(((WIDTH / 2) - 202) + j) + (((HEIGHT / 2) - (202)) + i)
+	      * pix->clipable.clip_width] = BLACK;
     }
 }
