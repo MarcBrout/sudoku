@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 13:23:20 2016 benjamin duhieu
-** Last update Sun Feb 28 19:39:16 2016 benjamin duhieu
+** Last update Sun Feb 28 19:42:10 2016 benjamin duhieu
 */
 
 #include <stdio.h>
@@ -59,21 +59,21 @@
 /*     } */
 /* } */
 
-void		position_square(t_list *square, t_bunny_pixelarray *grid)
+void		position_square(t_list *square, t_bunny_pixelarray *pix)
 {
   unsigned	*board;
   int		i;
   int		j;
 
-  board = (unsigned *)grid->pixels;
+  board = (unsigned *)pix->pixels;
   i = -1;
   while (++i < 52)
     {
       j = -1;
 	while (++j < 52)
 	  {
-	    pixel[(((WIDTH / 2) - 195) + sudo->x * 53 + j + 5) +
-		  (((HEIGHT / 2) - 195) + sudo->y * 53 + i + 5)
+	    board[(((WIDTH / 2) - 195) + square->x * 53 + j + 5) +
+		  (((HEIGHT / 2) - 195) + square->y * 53 + i + 5)
 		  * pix->clipable.clip_width] = GREY;
 	  }
     }
