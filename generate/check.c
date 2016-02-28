@@ -5,10 +5,26 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 20:52:31 2016 marc brout
-** Last update Sat Feb 27 21:04:13 2016 marc brout
+** Last update Sun Feb 28 00:42:27 2016 marc brout
 */
 
 #include "generate.h"
+
+int		check_str(const char *str)
+{
+  int		i;
+
+  i = 0;
+  if (!str || !str[0])
+    return (1);
+  while (str && str[i])
+    {
+      if (str[i] < '0' || str[i] > '9')
+	return (1);
+      i += 1;
+    }
+  return (0);
+}
 
 int		compare_squares(t_square *square, t_square *test, int value)
 {

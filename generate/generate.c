@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 12:10:44 2016 marc brout
-** Last update Sat Feb 27 21:12:34 2016 marc brout
+** Last update Sun Feb 28 00:44:38 2016 marc brout
 */
 
 #include <time.h>
@@ -91,9 +91,9 @@ int		main(int ac, char **av)
   t_square	*root;
   int		ret;
 
-  if (ac < 2)
+  if (ac != 2 || check_str(av[1]) || atoi(av[1]) > 9 || atoi(av[1]) < 0)
     {
-      printf("Usage: %s [INT] ... difficulty between 0 and 5.\n", av[0]);
+      printf("Usage: %s [INT] ... difficulty between 0 and 9.\n", av[0]);
       return (1);
     }
   srand(time(NULL));

@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 12:18:46 2016 marc brout
-** Last update Sat Feb 27 21:01:23 2016 marc brout
+** Last update Sun Feb 28 00:33:27 2016 marc brout
 */
 
 #ifndef GENERATE_H_
@@ -47,6 +47,7 @@ int		rand_nb(t_square *square);
 ** check.c
 */
 
+int		check_str(const char *str);
 int		compare_squares(t_square *square,
 				t_square *test,
 				int value);
