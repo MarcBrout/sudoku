@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Feb 25 16:34:58 2016 marc brout
-## Last update Sat Feb 27 23:06:15 2016 marc brout
+## Last update Sun Feb 28 12:57:52 2016 marc brout
 ##
 
 SRCR		=	res/
@@ -36,6 +36,8 @@ SRCGEN		=	$(SRCG)generate.c \
 			$(SRCG)free.c \
 			$(SRCG)check.c \
 			$(SRCG)array.c \
+			$(SRCG)show.c \
+			$(SRCG)difficulty.c
 
 OBJS    	=	$(SRC:.c=.o)
 

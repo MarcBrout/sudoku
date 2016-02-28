@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 12:10:44 2016 marc brout
-** Last update Sat Feb 27 21:12:34 2016 marc brout
+** Last update Sun Feb 28 13:08:31 2016 marc brout
 */
 
 #include <time.h>
@@ -62,28 +62,30 @@ int		fill_list(t_square *root, int size)
   return (0);
 }
 
-void		show_tab_int(t_square *root, int size, int difficulty)
+int		show_tab_int(t_square *root, int size, int difficulty)
 {
-  t_square	*curser;
+  int		rand;
   int		i;
+  int		**show;
+  int		*difftab;
 
   i = 0;
-  curser = root->next;
+  if (!(show = create_tab(size)) ||
+      !(difftab = difficultytab()))
+    return (1);
+  init_tab_show(show, size, 1);
   printf("|------------------|\n");
-  while (i < size)
+  while (i < (difftab[difficulty]))
     {
-      if (!(i % 9))
-	printf("|");
-      if (difficulty && !(rand () % difficulty))
-	printf(" %d", curser->value);
-      else
-	printf("  ");
-      if ((i % 9) == 8 && i != 0)
-	printf("|\n");
+      rand = get_rand_valid_cell(show, size);
+      show[1][rand - 1] = 0;
       i += 1;
-      curser = curser->next;
     }
+  show_tab(root, show, size);
+  free_tab(show);
+  free(difftab);
   printf("|------------------|\n");
+  return (0);
 }
 
 int		main(int ac, char **av)
@@ -91,9 +93,9 @@ int		main(int ac, char **av)
   t_square	*root;
   int		ret;
 
-  if (ac < 2)
+  if (ac != 2 || check_str(av[1]) || atoi(av[1]) > 9 || atoi(av[1]) < 0)
     {
-      printf("Usage: %s [INT] ... difficulty between 0 and 5.\n", av[0]);
+      printf("Usage: %s [INT] ... difficulty between 0 and 9.\n", av[0]);
       return (1);
     }
   srand(time(NULL));
@@ -104,7 +106,8 @@ int		main(int ac, char **av)
       if ((ret = fill_list(root, 81)))
 	free_square(root);
     }
-  show_tab_int(root, 81, (atoi(av[1]) + 1));
+  if (show_tab_int(root, 81, (atoi(av[1]))))
+    return (1);
   free_square(root);
   return (0);
 }
