@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Feb 25 16:34:58 2016 marc brout
-## Last update Sun Feb 28 17:06:19 2016 marc brout
+## Last update Sun Feb 28 20:44:27 2016 marc brout
 ##
 
 SRCR		=	res/
@@ -51,7 +51,8 @@ SRCINT		=	$(SRCI)main.c \
 			$(SRCI)parse_game.c \
 			$(SRCI)list.c \
 			$(SRCI)disp_to_screen.c \
-			$(SRCI)keyboard.c
+			$(SRCI)keyboard.c \
+			$(SRCI)compare.c
 
 OBJS    	=	$(SRC:.c=.o)
 
@@ -92,13 +93,13 @@ RM      	=	rm -f
 			$(CC) -c $< -o $@ $(HDFLAGS) $(CFLAGS)
 
 $(NAME):		$(OBJS)
-			$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)
+			@$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)
 
 bonus:			$(OBJSGEN)
-			$(CC) -o $(GENERATOR) $(OBJSGEN) $(LDFLAGS)
+			@$(CC) -o $(GENERATOR) $(OBJSGEN) $(LDFLAGS)
 
 interface:		$(OBJSINT)
-			$(CC) -o $(INTERFACE) $(OBJSINT) $(LDFLAGSI)
+			@$(CC) -o $(INTERFACE) $(OBJSINT) $(LDFLAGSI)
 
 all:			$(NAME)
 

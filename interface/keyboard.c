@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sun Feb 28 14:28:25 2016 marc brout
-** Last update Sun Feb 28 19:28:57 2016 marc brout
+** Last update Sun Feb 28 20:54:53 2016 marc brout
 */
 
 #include <stdio.h>
@@ -19,7 +19,7 @@ t_list			*move_cur(t_list *root, t_list *cur,
   i = -1;
   if (!right)
     {
-      while (++i < move)
+      while ((++i < move || cur->lock) && i < 81)
 	{
 	  if (cur->next == root)
 	    cur = cur->next->next;
@@ -29,7 +29,7 @@ t_list			*move_cur(t_list *root, t_list *cur,
     }
   else
     {
-      while (++i < move)
+      while ((++i < move || cur->lock) && i < 81)
 	{
 	  if (cur->prev == root)
 	    cur = cur->prev->prev;
@@ -53,11 +53,24 @@ void			move_cur_square(t_sudoku *sudoku,
     sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 9, 0);
 }
 
-void			input_number(t_sudoku *sudoku,
-					t_bunny_keysym keysym)
+void			input_number(t_main *data,
+				     t_sudoku *sudoku,
+				     t_bunny_keysym keysym)
 {
   if (keysym >= BKS_0 && keysym <= BKS_9 && !sudoku->cursquare->lock)
-    sudoku->cursquare->value = keysym - 26;
+    {
+      sudoku->cursquare->value = keysym - 26;
+      sudoku->cursquare = move_cur(sudoku->squares, sudoku->cursquare, 1, 0);
+    }
+  if (keysym == BKS_RETURN)
+    check_whole_grid(data, sudoku->squares);
+  if (keysym == BKS_R)
+    {
+      reset_grid(sudoku->squares);
+      data->vic = 0;
+      data->lose = 0;
+      sudoku->cursquare = sudoku->squares->next;
+    }
 }
 
 t_bunny_response	keyboard(t_bunny_event_state state,
@@ -72,7 +85,7 @@ t_bunny_response	keyboard(t_bunny_event_state state,
   if (state == GO_DOWN)
     {
       move_cur_square(sudoki->cursudo, keysym);
-      input_number(sudoki->cursudo, keysym);
+      input_number(data, sudoki->cursudo, keysym);
     }
   if (state == GO_DOWN && keysym == BKS_N)
     {

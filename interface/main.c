@@ -1,11 +1,11 @@
 /*
-** main.c for main in /home/duhieu_b/Prog_elem/sudoki-bi/interface
+1;2802;0c** main.c for main in /home/duhieu_b/Prog_elem/sudoki-bi/interface
 **
 ** Made by benjamin duhieu
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:00:47 2016 benjamin duhieu
-** Last update Sun Feb 28 19:50:23 2016 benjamin duhieu
+** Last update Sun Feb 28 20:59:50 2016 marc brout
 */
 
 #include "sudoki.h"
@@ -85,6 +85,8 @@ int		main(int argc, char **argv)
   sudoki.sudoki = NULL;
   if (!(sudoki.sudoki = parse_input()))
     return (1);
+  sudoki.vic = 0;
+  sudoki.lose = 0;
   sudoki.cursudo = sudoki.sudoki->next;
   if (init_main(&sudoki) || init_game_lists(&sudoki))
     return (1);
