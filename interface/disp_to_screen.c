@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 13:23:20 2016 benjamin duhieu
-** Last update Sun Feb 28 19:44:53 2016 benjamin duhieu
+** Last update Sun Feb 28 19:47:04 2016 benjamin duhieu
 */
 
 #include <stdio.h>
@@ -93,6 +93,7 @@ void		put_nbr(t_image *nbr, t_list *sudo, t_bunny_pixelarray *pix)
     {
       if (elem->value)
 	{
+	  printf("elemx : %d && elemy : %d\n", elem->x, elem->y);
 	  nb = (unsigned *)nbr->number[elem->value - 1]->pixels;
 	  i = -1;
 	  while (++i < nbr->number[elem->value - 1]->clipable.clip_height)

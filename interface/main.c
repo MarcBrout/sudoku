@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:00:47 2016 benjamin duhieu
-** Last update Sun Feb 28 19:41:02 2016 benjamin duhieu
+** Last update Sun Feb 28 19:50:23 2016 benjamin duhieu
 */
 
 #include "sudoki.h"
@@ -31,9 +31,9 @@ t_bunny_response	main_loop(void	*data)
   fill_screen(sudoki->pix);
   /* wrong_number(sudoki->cursudo->cursquare, sudoki->cursudo->squares, */
   /* 	       sudoki->nbr.grid); */
-  position_square(sudoki->cursudo->cursquare, sudoki->pix);
   disp_grid_black(sudoki->pix);
   disp_blank(sudoki->pix);
+  position_square(sudoki->cursudo->cursquare, sudoki->pix);
   put_nbr(&sudoki->nbr, sudoki->cursudo->squares, sudoki->pix);
   bunny_blit(&(sudoki->win->buffer), &(sudoki->pix->clipable), NULL);
   bunny_display(sudoki->win);
