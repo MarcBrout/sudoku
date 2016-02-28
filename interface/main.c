@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:00:47 2016 benjamin duhieu
-** Last update Sun Feb 28 15:57:23 2016 marc brout
+** Last update Sun Feb 28 16:32:53 2016 marc brout
 */
 
 #include "sudoki.h"
@@ -28,7 +28,6 @@ t_bunny_response	main_loop(void	*data)
   t_main		*sudoki;
 
   sudoki = data;
-
   fill_screen(sudoki->pix);
   disp_grid(sudoki->pix, sudoki->nbr.grid);
   bunny_blit(&(sudoki->win->buffer), &(sudoki->pix->clipable), NULL);
@@ -56,20 +55,33 @@ int	init_main(t_main *sudoki)
   return (0);
 }
 
-int		main(int argc, char **argv)
+int		init_game_lists(t_main *data)
 {
   t_sudoku	*tmp;
+
+  tmp = data->sudoki->next;
+  while (tmp)
+    {
+      if (!(tmp->squares = new_sudoku(tmp, 81)))
+	return (1);
+      tmp->cursquare = tmp->squares->next;
+      tmp = tmp->next;
+    }
+  return (0);
+}
+
+int		main(int argc, char **argv)
+{
   t_main	sudoki;
 
   if (argc > 1 || !argv)
     return (my_puterror
 	    ("Usage : ./sudoki-bi use a valid map on the standard input (0).\n"));
-  tmp = NULL;
-  if (!(tmp = parse_input()))
+  sudoki.sudoki = NULL;
+  if (!(sudoki.sudoki = parse_input()))
     return (1);
-  sudoki.first_game = 1;
-  sudoki.new_game = 0;
-  if (init_main(&sudoki))
+  sudoki.cursudo = sudoki.sudoki->next;
+  if (init_main(&sudoki) || init_game_lists(&sudoki))
     return (1);
   bunny_set_loop_main_function(main_loop);
   bunny_loop(sudoki.win, 60, &sudoki);

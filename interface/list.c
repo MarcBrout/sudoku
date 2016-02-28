@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Feb 27 20:41:09 2016 marc brout
-** Last update Sun Feb 28 15:47:32 2016 marc brout
+** Last update Sun Feb 28 16:22:54 2016 marc brout
 */
 
 #include <stdlib.h>
@@ -26,7 +26,7 @@ void		free_list(t_list *root)
   free(root);
 }
 
-t_list		*new_sudoku(t_square *sudoku, int size)
+t_list		*new_sudoku(t_sudoku *sudoku, int size)
 {
   t_list	*list;
 
