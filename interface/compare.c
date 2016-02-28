@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sun Feb 28 19:57:39 2016 marc brout
-** Last update Sun Feb 28 21:00:20 2016 marc brout
+** Last update Sun Feb 28 21:10:26 2016 marc brout
 */
 
 #include	"game.h"
@@ -62,5 +62,4 @@ void		check_whole_grid(t_main *data, t_list *root)
     }
   if (!data->lose)
     data->vic = 1;
-  printf("vic = %d, lose = %d\n", data->vic, data->lose);
 }
