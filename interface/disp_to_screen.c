@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 13:23:20 2016 benjamin duhieu
-** Last update Sun Feb 28 19:42:10 2016 benjamin duhieu
+** Last update Sun Feb 28 19:44:53 2016 benjamin duhieu
 */
 
 #include <stdio.h>
@@ -99,8 +99,8 @@ void		put_nbr(t_image *nbr, t_list *sudo, t_bunny_pixelarray *pix)
 	    {
 	      j = -1;
 	      while (++j < nbr->number[elem->value - 1]->clipable.clip_width)
-		pixel[(((WIDTH / 2) - 195) + sudo->x * 53 + j + 5) +
-		      (((HEIGHT / 2) - 195) + sudo->y * 53 + i + 5)
+		pixel[(((WIDTH / 2) - 195) + elem->x * 53 + j + 5) +
+		      (((HEIGHT / 2) - 195) + elem->y * 53 + i + 5)
 		      * pix->clipable.clip_width] =
 		  nb[j + i * nbr->number[elem->value - 1]->clipable.clip_width];
 	    }
