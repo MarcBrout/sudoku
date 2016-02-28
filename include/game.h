@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:01:44 2016 benjamin duhieu
-** Last update Sun Feb 28 15:29:38 2016 benjamin duhieu
+** Last update Sun Feb 28 15:45:57 2016 benjamin duhieu
 */
 
 #ifndef GAME_H_
@@ -24,6 +24,18 @@
 # define NUM9 "./interface/bmp/gold9.bmp"
 
 # include "lapin.h"
+# incude "parser.h"
+
+typedef struct		s_list
+{
+  int			position;
+  int			x;
+  int			y;
+  int			cube;
+  int			value;
+  struct s_list		*next;
+  struct s_list		*prev;
+}			t_list;
 
 typedef	struct		s_image
 {
@@ -36,6 +48,9 @@ typedef struct		s_main
   t_bunny_pixelarray	*pix;
   t_bunny_window	*win;
   t_image		nbr;
+  t_square		*sudoki;
+  t_list		list;
+  int			first_game;
 }			t_main;
 
 /*
