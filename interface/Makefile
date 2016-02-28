@@ -1,11 +1,11 @@
 ##
-## Makefile for Makefile in /home/duhieu_b/infographie/rendu/gfx_tekgui
-##
-## Made by benjamin duhieu
-## Login   <duhieu_b@epitech.net>
-##
-## Started on  Sat Feb 13 17:14:02 2016 benjamin duhieu
-## Last update Sun Feb 28 13:10:00 2016 benjamin duhieu
+## Makefile for sudoki in /home/brout_m/RENDU/CPE/sudoki-bi/interface
+## 
+## Made by marc brout
+## Login   <brout_m@epitech.net>
+## 
+## Started on  Sun Feb 28 13:19:08 2016 marc brout
+## Last update Sun Feb 28 13:32:12 2016 marc brout
 ##
 
 SRCP	=	./
@@ -24,7 +24,7 @@ CC      =	gcc -g
 
 CFLAGS  =	-W -Wall -Werror
 
-CFLAGS	+=	-I/home/${USER}/.froot/include/lapin -I../include
+CFLAGS	+=	 -I../include -I/home/${USER}/.froot/include/lapin
 
 LDFLAGS =	-L/home/${USER}/.froot/lib \
 		-llapin \

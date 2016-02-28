@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Feb 28 12:01:44 2016 benjamin duhieu
-** Last update Sun Feb 28 13:02:28 2016 benjamin duhieu
+** Last update Sun Feb 28 13:12:27 2016 marc brout
 */
 
 #ifndef GAME_H_
@@ -13,8 +13,7 @@
 # define WIDTH 1024
 # define HEIGHT 768
 
-# include "basic.h"
-# include "advanced.h"
+# include "lapin.h"
 
 typedef	struct	s_image
 {

@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Feb 25 16:34:58 2016 marc brout
-## Last update Sun Feb 28 12:57:52 2016 marc brout
+## Last update Sun Feb 28 13:38:51 2016 marc brout
 ##
 
 SRCR		=	res/
@@ -15,6 +15,8 @@ SRCP		=	parsing/
 SRCM		=	main/
 
 SRCG		=	generate/
+
+SRCI		=	interface/
 
 SRC     	=	$(SRCM)main.c \
 			$(SRCP)parsing.c \
@@ -39,13 +41,25 @@ SRCGEN		=	$(SRCG)generate.c \
 			$(SRCG)show.c \
 			$(SRCG)difficulty.c
 
+SRCINT		=	$(SRCI)main.c \
+			$(SRCI)free_game.c \
+			$(SRCI)game_check.c \
+			$(SRCI)get_next_line.c \
+			$(SRCI)list_game.c \
+			$(SRCI)error.c \
+			$(SRCI)show.c
+
 OBJS    	=	$(SRC:.c=.o)
 
 OBJSGEN		=	$(SRCGEN:.c=.o)
 
+OBJSINT		=	$(SRCINT:.c=.o)
+
 NAME    	=	bin/sudoki-bi
 
 GENERATOR	=	bin/generator-sudoki-bi
+
+INTERFACE	=	bin/interface-sudoki-bi
 
 CC      	=	gcc -g
 
@@ -53,7 +67,18 @@ CFLAGS  	=	-W -Wall -Werror
 
 HDFLAGS 	=	-Iinclude/
 
+#HDFLAGS 	+=	-I/home/${USER}/.froot/include/lapin
+
 LDFLAGS 	=
+
+LDFLAGSI	=	-L/home/${USER}/.froot/lib \
+			-llapin \
+			-lsfml-audio \
+			-lsfml-graphics \
+			-lsfml-window \
+			-lsfml-system \
+			-lstdc++ -ldl \
+			-lm \
 
 RM      	=	rm -f
 
@@ -68,13 +93,18 @@ $(NAME):		$(OBJS)
 bonus:			$(OBJSGEN)
 			$(CC) -o $(GENERATOR) $(OBJSGEN) $(LDFLAGS)
 
+interface:		$(OBJSINT)
+			$(CC) -o $(INTERFACE) $(OBJSINT) $(LDFLAGSI)
+
 all:			$(NAME)
 
 clean:
+			$(RM) $(OBJSINT)
 			$(RM) $(OBJS)
 			$(RM) $(OBJSGEN)
 
 fclean:			clean
+			$(RM) $(INTERFACE)
 			$(RM) $(NAME)
 			$(RM) $(GENERATOR)
 
