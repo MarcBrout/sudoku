@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Feb 25 16:34:58 2016 marc brout
-## Last update Sun Feb 28 22:43:56 2016 marc brout
+## Last update Mon Feb 29 01:15:14 2016 marc brout
 ##
 
 SRCR		=	res/
@@ -68,7 +68,7 @@ GENERATOR	=	bin/generator-sudoki-bi
 
 INTERFACE	=	bin/interface-sudoki-bi
 
-CC      	=	gcc -g
+CC      	=	gcc
 
 CFLAGS  	=	-W -Wall -Werror
 
