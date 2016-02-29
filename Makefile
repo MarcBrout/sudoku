@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Feb 25 16:34:58 2016 marc brout
-## Last update Mon Feb 29 01:15:14 2016 marc brout
+## Last update Mon Feb 29 01:30:08 2016 marc brout
 ##
 
 SRCR		=	res/
@@ -95,13 +95,16 @@ RM      	=	rm -f
 			$(CC) -c $< -o $@ $(HDFLAGS) $(CFLAGS)
 
 $(NAME):		$(OBJS)
-			@$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)
+			$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)
+
+opti:			$(OBJS)
+			$(CC2) -o $(NAME) $(OBJS) $(LDFLAGS)
 
 bonus:			$(OBJSGEN)
-			@$(CC) -o $(GENERATOR) $(OBJSGEN) $(LDFLAGS)
+			$(CC) -o $(GENERATOR) $(OBJSGEN) $(LDFLAGS)
 
 interface:		$(OBJSINT)
-			@$(CC) -o $(INTERFACE) $(OBJSINT) $(LDFLAGSI)
+			$(CC) -o $(INTERFACE) $(OBJSINT) $(LDFLAGSI)
 
 all:			$(NAME)
 
