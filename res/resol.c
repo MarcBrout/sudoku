@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sat Feb 27 11:04:33 2016 benjamin duhieu
-** Last update Sun Feb 28 00:22:01 2016 benjamin duhieu
+** Last update Mon Feb 29 01:11:16 2016 marc brout
 */
 
 #include <stdio.h>
@@ -73,7 +73,7 @@ int		put_in_tab(t_case *root, t_case *posit, char **grille)
 
   i = 0;
   nbr = 0;
-  while (root && posit != root && ++i < 100000000)
+  while (root && posit != root && ++i < 50000000)
     {
       if (!check_tab(posit->tab) && (nbr = choose_nbr(posit)))
 	{
